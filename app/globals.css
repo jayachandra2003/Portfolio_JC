@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Design tokens — dark-first, premium/minimal direction.
+  Base: charcoal-navy, not pure black (feels less harsh, more "editorial").
+  Accent: muted teal/emerald — deliberately not another purple gradient.
+  All colors as H S% L% triples so Tailwind's hsl(var(--x)) usage works.
+*/
+:root {
+  --background: 220 22% 7%;
+  --foreground: 40 25% 95%;
+  --card: 220 20% 10%;
+  --card-foreground: 40 20% 92%;
+  --border: 220 16% 18%;
+  --muted: 220 10% 60%;
+  --muted-foreground: 220 8% 68%;
+  --accent: 168 55% 45%;
+  --accent-foreground: 220 22% 7%;
+  --ring: 168 55% 45%;
+
+  --radius: 0.75rem;
+}
+
+/* Light theme override — toggled via `.light` class on <html> */
+.light {
+  --background: 40 30% 98%;
+  --foreground: 220 25% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 22% 12%;
+  --border: 220 15% 88%;
+  --muted: 220 10% 40%;
+  --muted-foreground: 220 8% 35%;
+  --accent: 168 60% 32%;
+  --accent-foreground: 40 30% 98%;
+  --ring: 168 60% 32%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+/* Glassmorphism utility — used for nav bar, cards, floating panels */
+.glass {
+  background-color: hsl(var(--card) / 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--border) / 0.6);
+}
+
+/* Subtle radial gradient mesh for hero/section backgrounds — no purple-on-white cliché */
+.gradient-mesh {
+  background-image:
+    radial-gradient(circle at 20% 20%, hsl(var(--accent) / 0.15), transparent 40%),
+    radial-gradient(circle at 80% 0%, hsl(168 40% 30% / 0.12), transparent 45%),
+    radial-gradient(circle at 50% 100%, hsl(220 30% 20% / 0.4), transparent 60%);
+}
+
+::selection {
+  background-color: hsl(var(--accent) / 0.3);
+  color: hsl(var(--foreground));
+}

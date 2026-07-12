@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+.env
+.env.local
+.env*.local
+serviceAccountKey.json
+.DS_Store
+*.log
+next-env.d.ts
