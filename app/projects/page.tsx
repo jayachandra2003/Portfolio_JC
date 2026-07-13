@@ -2,8 +2,13 @@ import type { Metadata } from "next";
 import { getProjects } from "@/lib/data/projects";
 import { ProjectsGrid } from "@/components/sections/projects-grid";
 
+// Revalidate at most once per hour — avoids hitting Firestore on every
+// single page request while still picking up seed-data changes reasonably
+// soon after you re-run `npm run seed`.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
-  title: "Projects — Jaya Chandra",
+  title: "Projects",
   description:
     "Projects by Vennam Jaya Chandra, including SkyWrite, Fabric Marketplace, and Python mini-projects.",
 };

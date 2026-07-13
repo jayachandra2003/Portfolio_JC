@@ -19,6 +19,8 @@ export interface Certification {
   issuer: string;
   date: string; // ISO string, e.g. "2025-03-01"
   credentialUrl: string | null;
+  /** Path under /public, e.g. "/certifications/oci-ai-foundations.png". Null until you add the image. */
+  imagePath: string | null;
 }
 
 export interface Skill {

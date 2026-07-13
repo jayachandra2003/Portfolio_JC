@@ -7,8 +7,10 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
-  title: "SkyWrite Case Study — Jaya Chandra",
+  title: "SkyWrite Case Study",
   description:
     "How SkyWrite works: a real-time touchless whiteboard combining hand tracking, gesture-based drawing, and CNN-based character recognition.",
 };
