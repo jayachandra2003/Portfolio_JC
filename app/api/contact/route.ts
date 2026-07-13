@@ -37,30 +37,16 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Email notification is best-effort, separate from the save above.
-  // If Resend is unreachable or misconfigured, the message is still
-  // safely stored in Firestore — we just log the email failure instead
-  // of returning an error to the person who submitted the form.
-  // TEMPORARY diagnostic — remove after debugging the email delivery issue.
-  console.log("DEBUG contact route env check:", {
-    recipientEmail: process.env.CONTACT_NOTIFICATION_EMAIL,
-    recipientEmailLength: process.env.CONTACT_NOTIFICATION_EMAIL?.length,
-    hasApiKey: !!process.env.RESEND_API_KEY,
-    apiKeyLength: process.env.RESEND_API_KEY?.length,
-    apiKeyPrefix: process.env.RESEND_API_KEY?.slice(0, 5),
-  });
-
+  // Email notification is best-effort. Even if email fails,
+  // the message has already been saved to Firestore.
   try {
-    const emailResult = await resend.emails.send({
+    await resend.emails.send({
       from: "Portfolio Contact Form <onboarding@resend.dev>",
       to: process.env.CONTACT_NOTIFICATION_EMAIL ?? "",
       replyTo: parsed.data.email,
       subject: `New portfolio message from ${parsed.data.name}`,
       text: `From: ${parsed.data.name} (${parsed.data.email})\n\n${parsed.data.message}`,
     });
-    // TEMPORARY diagnostic — log the full Resend response, including its
-    // internal id and any `error` field it returns even on a 200 status.
-    console.log("DEBUG Resend send result:", JSON.stringify(emailResult));
   } catch (err) {
     console.error("Contact message saved, but email notification failed:", err);
   }
