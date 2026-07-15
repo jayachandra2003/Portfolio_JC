@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, MapPin } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { useTypewriter } from "@/hooks/use-typewriter";
@@ -16,11 +17,41 @@ const fadeUp = {
   }),
 };
 
+function ProfilePhoto({ className = "" }: { className?: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.92 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className={`relative shrink-0 ${className}`}
+    >
+      <div className="absolute inset-0 -z-10 rounded-full bg-accent/25 blur-2xl" />
+      <div className="relative h-40 w-40 overflow-hidden rounded-full ring-2 ring-accent/40 ring-offset-4 ring-offset-background md:h-64 md:w-64 lg:h-80 lg:w-80">
+        <Image
+          src="/images/profile-photo.png"
+          alt={PROFILE.name}
+          fill
+          sizes="(max-width: 768px) 160px, (max-width: 1024px) 256px, 320px"
+          className="object-cover"
+          priority
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 export function Hero() {
   const role = useTypewriter({ words: [...PROFILE.roles] });
 
   return (
-    <section className="gradient-mesh flex min-h-[calc(100vh-4rem)] flex-col justify-center px-8 py-20 md:px-16">
+    <section className="gradient-mesh relative flex min-h-[calc(100vh-4rem)] flex-col justify-center px-8 py-20 md:px-16">
+      {/* Mobile: photo stacked above text, normal flow */}
+      <div className="mb-8 flex justify-center md:hidden">
+        <ProfilePhoto />
+      </div>
+
+      {/* Text content — completely unconstrained by the photo, exactly as
+          it was originally, so the heading stays on one line. */}
       <motion.div
         initial="hidden"
         animate="visible"
@@ -81,6 +112,16 @@ export function Hero() {
           Contact Me
         </Link>
       </motion.div>
+
+      {/* Desktop: photo positioned independently in the right-side space,
+          roughly midway between the text block and the right edge —
+          doesn't affect text width/wrapping at all since it's absolutely
+          positioned relative to the section, not in the text's flex flow. */}
+      <div className="pointer-events-none absolute inset-0 hidden items-center justify-end md:flex">
+        <div className="pointer-events-auto mr-[8%] lg:mr-[12%]">
+          <ProfilePhoto />
+        </div>
+      </div>
     </section>
   );
 }

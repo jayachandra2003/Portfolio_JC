@@ -1,5 +1,6 @@
 import { initializeApp, cert, getApps, type App } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
+import { getAuth } from "firebase-admin/auth";
 
 // Server-only Admin SDK singleton. Used by API routes (e.g. the contact
 // form handler) that need to write to Firestore, bypassing client-side
@@ -23,3 +24,4 @@ function getAdminApp(): App {
 }
 
 export const adminDb = getFirestore(getAdminApp());
+export const adminAuth = getAuth(getAdminApp());
