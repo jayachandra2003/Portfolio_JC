@@ -18,7 +18,7 @@ const fadeUp = {
 export function About() {
   return (
     <section className="mx-auto max-w-3xl px-8 py-20 md:px-16">
-      <motion.h1
+      <motion.h2
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -27,7 +27,7 @@ export function About() {
         className="mb-8 font-display text-4xl italic text-foreground md:text-5xl"
       >
         About
-      </motion.h1>
+      </motion.h2>
 
       <motion.p
         initial="hidden"

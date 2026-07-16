@@ -5,14 +5,13 @@ export const SOCIALS = {
   email: "jayachandravennam.jc@gmail.com",
 } as const;
 
-// Routes used by the navbar — pages for each are built in later phases.
-// Linking to them now is intentional: it surfaces 404s as a visible
-// reminder of what's left to build, rather than silently going nowhere.
+// Anchor links for the single-scroll home page. "/projects/skywrite" is
+// the one exception that's still a real standalone route.
 export const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
-  { label: "Certifications", href: "/certifications" },
-  { label: "Resume", href: "/resume" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Certifications", href: "/#certifications" },
+  { label: "Resume", href: "/#resume" },
+  { label: "Contact", href: "/#contact" },
 ] as const;

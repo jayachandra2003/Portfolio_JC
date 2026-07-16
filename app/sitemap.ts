@@ -2,18 +2,13 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-// Static list matching the actual routes built so far. Update this if you
-// add more pages later — Next.js doesn't auto-discover routes for sitemaps.
+// The site is now a single scrolling home page (with anchor sections)
+// plus the SkyWrite case study as the one remaining standalone route.
+// Old URLs (/about, /projects, etc.) 301-redirect via next.config.mjs
+// and are intentionally NOT listed here — a sitemap should only list
+// canonical URLs, not ones that immediately redirect elsewhere.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
-    "/about",
-    "/projects",
-    "/projects/skywrite",
-    "/certifications",
-    "/resume",
-    "/contact",
-  ];
+  const routes = ["", "/projects/skywrite"];
 
   return routes.map((route) => ({
     url: `${SITE_URL}${route}`,

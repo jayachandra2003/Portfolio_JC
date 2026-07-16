@@ -103,12 +103,12 @@ export function Hero() {
         className="mt-8 flex flex-wrap gap-4"
       >
         <Link
-          href="/projects"
+          href="/#projects"
           className={buttonVariants({ variant: "primary", size: "lg", className: "gap-2" })}
         >
           View Projects <ArrowRight size={16} />
         </Link>
-        <Link href="/contact" className={buttonVariants({ variant: "outline", size: "lg" })}>
+        <Link href="/#contact" className={buttonVariants({ variant: "outline", size: "lg" })}>
           Contact Me
         </Link>
       </motion.div>

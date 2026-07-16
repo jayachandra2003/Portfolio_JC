@@ -56,7 +56,7 @@ export default async function SkyWriteCaseStudyPage() {
   return (
     <article className="mx-auto max-w-3xl px-8 py-20 md:px-16">
       <Link
-        href="/projects"
+        href="/#projects"
         className="mb-8 inline-flex items-center gap-1.5 font-body text-sm text-muted-foreground hover:text-accent"
       >
         <ArrowLeft size={14} /> Back to Projects
