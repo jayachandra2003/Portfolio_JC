@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { revalidatePath } from "next/cache";
 import { adminDb } from "@/lib/firebase/admin";
 import { verifyAdminRequest } from "@/lib/auth/verify-admin-request";
 
@@ -35,5 +36,6 @@ export async function POST(req: NextRequest) {
   }
 
   await adminDb.collection("certifications").doc(parsed.data.id).set(parsed.data);
+  revalidatePath("/");
   return NextResponse.json({ success: true });
 }

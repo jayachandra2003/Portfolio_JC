@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { revalidatePath } from "next/cache";
 import { adminDb } from "@/lib/firebase/admin";
 import { verifyAdminRequest } from "@/lib/auth/verify-admin-request";
 
@@ -34,6 +35,8 @@ export async function PUT(
   }
 
   await adminDb.collection("projects").doc(id).set({ id, ...parsed.data });
+  revalidatePath("/");
+  revalidatePath("/projects/skywrite");
   return NextResponse.json({ success: true });
 }
 
@@ -46,5 +49,7 @@ export async function DELETE(
 
   const { id } = await params;
   await adminDb.collection("projects").doc(id).delete();
+  revalidatePath("/");
+  revalidatePath("/projects/skywrite");
   return NextResponse.json({ success: true });
 }
