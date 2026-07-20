@@ -28,6 +28,25 @@ export interface Skill {
   category: "language" | "framework" | "database" | "tool";
 }
 
+export interface SiteContent {
+  name: string;
+  location: string;
+  roles: string[];
+  summary: string;
+  education: {
+    degree: string;
+    institution: string;
+    location: string;
+    startYear: number;
+    endYear: number;
+    cgpa: string;
+  };
+  /** Path under /public, e.g. "/resume/Jaya_Chandra_Resume.pdf". The actual
+   * PDF file still needs to be manually added to /public and redeployed —
+   * this only stores the path (no Storage backend for real file uploads). */
+  resumePath: string;
+}
+
 export interface ContactFormValues {
   name: string;
   email: string;

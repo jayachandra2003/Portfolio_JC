@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ArrowRight, MapPin } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { useTypewriter } from "@/hooks/use-typewriter";
-import { PROFILE } from "@/lib/data/profile";
+import type { SiteContent } from "@/lib/types";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -17,7 +17,7 @@ const fadeUp = {
   }),
 };
 
-function ProfilePhoto({ className = "" }: { className?: string }) {
+function ProfilePhoto({ name, className = "" }: { name: string; className?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.92 }}
@@ -29,7 +29,7 @@ function ProfilePhoto({ className = "" }: { className?: string }) {
       <div className="relative h-40 w-40 overflow-hidden rounded-full ring-2 ring-accent/40 ring-offset-4 ring-offset-background md:h-64 md:w-64 lg:h-80 lg:w-80">
         <Image
           src="/images/profile-photo.png"
-          alt={PROFILE.name}
+          alt={name}
           fill
           sizes="(max-width: 768px) 160px, (max-width: 1024px) 256px, 320px"
           className="object-cover"
@@ -40,14 +40,14 @@ function ProfilePhoto({ className = "" }: { className?: string }) {
   );
 }
 
-export function Hero() {
-  const role = useTypewriter({ words: [...PROFILE.roles] });
+export function Hero({ profile }: { profile: SiteContent }) {
+  const role = useTypewriter({ words: [...profile.roles] });
 
   return (
     <section className="gradient-mesh relative flex min-h-[calc(100vh-4rem)] flex-col justify-center px-8 py-20 md:px-16">
       {/* Mobile: photo stacked above text, normal flow */}
       <div className="mb-8 flex justify-center md:hidden">
-        <ProfilePhoto />
+        <ProfilePhoto name={profile.name} />
       </div>
 
       {/* Text content — completely unconstrained by the photo, exactly as
@@ -60,7 +60,7 @@ export function Hero() {
         className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-border px-3 py-1 font-body text-xs text-muted-foreground"
       >
         <MapPin size={12} />
-        {PROFILE.location}
+        {profile.location}
       </motion.div>
 
       <motion.h1
@@ -70,7 +70,7 @@ export function Hero() {
         variants={fadeUp}
         className="font-display text-5xl italic text-foreground md:text-7xl"
       >
-        {PROFILE.name}
+        {profile.name}
       </motion.h1>
 
       <motion.p
@@ -92,7 +92,7 @@ export function Hero() {
         variants={fadeUp}
         className="mt-6 max-w-xl font-body text-muted-foreground"
       >
-        {PROFILE.summary}
+        {profile.summary}
       </motion.p>
 
       <motion.div
@@ -119,7 +119,7 @@ export function Hero() {
           positioned relative to the section, not in the text's flex flow. */}
       <div className="pointer-events-none absolute inset-0 hidden items-center justify-end md:flex">
         <div className="pointer-events-auto mr-[8%] lg:mr-[12%]">
-          <ProfilePhoto />
+          <ProfilePhoto name={profile.name} />
         </div>
       </div>
     </section>

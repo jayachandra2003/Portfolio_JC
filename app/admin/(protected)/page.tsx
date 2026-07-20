@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LogOut, Mail, Briefcase, Award } from "lucide-react";
+import { LogOut, Mail, Briefcase, Award, FileEdit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/components/providers/auth-provider";
@@ -13,6 +13,7 @@ export default function AdminDashboardPage() {
     { href: "/admin/messages", label: "Messages", icon: Mail, desc: "View contact form submissions" },
     { href: "/admin/projects", label: "Projects", icon: Briefcase, desc: "Add, edit, or remove projects" },
     { href: "/admin/certifications", label: "Certifications", icon: Award, desc: "Manage certifications" },
+    { href: "/admin/site-content", label: "Site Content", icon: FileEdit, desc: "Edit Hero/About/Resume text" },
   ];
 
   return (

@@ -7,8 +7,8 @@ import { CertificationsGrid } from "@/components/sections/certifications-grid";
 import { ContactForm } from "@/components/sections/contact-form";
 import { getProjects } from "@/lib/data/projects";
 import { getCertifications } from "@/lib/data/certifications";
+import { getSiteContent } from "@/lib/data/site-content";
 import { SOCIALS } from "@/lib/data/socials";
-import { RESUME_PATH } from "@/lib/data/resume";
 import { buttonVariants } from "@/components/ui/button";
 
 // Revalidate at most once per hour — same reasoning as the old standalone
@@ -21,19 +21,20 @@ export const revalidate = 3600;
 // Each section has a matching id + scroll-mt-16 (offset for the sticky
 // navbar) so the navbar's anchor links and smooth-scroll land correctly.
 export default async function HomePage() {
-  const [projects, certifications] = await Promise.all([
+  const [projects, certifications, siteContent] = await Promise.all([
     getProjects(),
     getCertifications(),
+    getSiteContent(),
   ]);
 
   return (
     <>
       <div id="home">
-        <Hero />
+        <Hero profile={siteContent} />
       </div>
 
       <div id="about" className="scroll-mt-16">
-        <About />
+        <About profile={siteContent} />
       </div>
 
       <Skills />
@@ -58,7 +59,7 @@ export default async function HomePage() {
             Resume
           </h2>
           <a
-            href={RESUME_PATH}
+            href={siteContent.resumePath}
             download
             className={buttonVariants({ variant: "primary", className: "gap-2" })}
           >
@@ -66,12 +67,12 @@ export default async function HomePage() {
           </a>
         </div>
         <div className="overflow-hidden rounded-xl border border-border">
-          <iframe src={RESUME_PATH} title="Jaya Chandra's Resume" className="h-[80vh] w-full" />
+          <iframe src={siteContent.resumePath} title="Jaya Chandra's Resume" className="h-[80vh] w-full" />
         </div>
         <p className="mt-4 flex items-center gap-1.5 font-body text-sm text-muted-foreground">
           <FileText size={14} />
           Preview not loading?{" "}
-          <a href={RESUME_PATH} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+          <a href={siteContent.resumePath} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
             Open it directly
           </a>
           .

@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { PROFILE } from "@/lib/data/profile";
-import { EDUCATION } from "@/lib/data/education";
+import type { SiteContent } from "@/lib/types";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -15,7 +14,9 @@ const fadeUp = {
   }),
 };
 
-export function About() {
+export function About({ profile }: { profile: SiteContent }) {
+  const { education } = profile;
+
   return (
     <section className="mx-auto max-w-3xl px-8 py-20 md:px-16">
       <motion.h2
@@ -37,7 +38,7 @@ export function About() {
         variants={fadeUp}
         className="mb-10 font-body text-lg leading-relaxed text-muted-foreground"
       >
-        {PROFILE.summary}
+        {profile.summary}
       </motion.p>
 
       <motion.div
@@ -54,13 +55,13 @@ export function About() {
             </div>
             <div>
               <p className="font-display text-lg text-card-foreground">
-                {EDUCATION.degree}
+                {education.degree}
               </p>
               <p className="mt-1 font-body text-sm text-muted-foreground">
-                {EDUCATION.institution}, {EDUCATION.location}
+                {education.institution}, {education.location}
               </p>
               <p className="mt-1 font-body text-sm text-muted-foreground">
-                {EDUCATION.startYear} – {EDUCATION.endYear} &middot; CGPA: {EDUCATION.cgpa}
+                {education.startYear} – {education.endYear} &middot; CGPA: {education.cgpa}
               </p>
             </div>
           </CardContent>
