@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Download, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, Download, FileText, ExternalLink } from "lucide-react";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
@@ -10,6 +10,7 @@ import { getCertifications } from "@/lib/data/certifications";
 import { getSiteContent } from "@/lib/data/site-content";
 import { SOCIALS } from "@/lib/data/socials";
 import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 // Revalidate at most once per hour — same reasoning as the old standalone
 // Projects/Certifications pages: avoids hitting Firestore on every request.
@@ -53,30 +54,43 @@ export default async function HomePage() {
         <CertificationsGrid certifications={certifications} />
       </section>
 
-      <section id="resume" className="scroll-mt-16 mx-auto max-w-4xl px-8 py-20 md:px-16">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <h2 className="font-display text-4xl italic text-foreground md:text-5xl">
-            Resume
-          </h2>
-          <a
-            href={siteContent.resumePath}
-            download
-            className={buttonVariants({ variant: "primary", className: "gap-2" })}
-          >
-            <Download size={16} /> Download PDF
-          </a>
-        </div>
-        <div className="overflow-hidden rounded-xl border border-border">
-          <iframe src={siteContent.resumePath} title="Jaya Chandra's Resume" className="h-[80vh] w-full" />
-        </div>
-        <p className="mt-4 flex items-center gap-1.5 font-body text-sm text-muted-foreground">
-          <FileText size={14} />
-          Preview not loading?{" "}
-          <a href={siteContent.resumePath} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-            Open it directly
-          </a>
-          .
-        </p>
+      <section id="resume" className="scroll-mt-16 mx-auto max-w-3xl px-8 py-20 md:px-16">
+        <h2 className="mb-10 font-display text-4xl italic text-foreground md:text-5xl">
+          Resume
+        </h2>
+
+        <Card glass className="mx-auto max-w-md text-center">
+          <CardContent className="flex flex-col items-center gap-4 pt-10 pb-10">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/15 text-accent">
+              <FileText size={28} />
+            </div>
+            <div>
+              <p className="font-display text-xl text-card-foreground">
+                {siteContent.name}
+              </p>
+              <p className="mt-1 font-body text-sm text-muted-foreground">
+                Full resume — education, projects, skills, and certifications.
+              </p>
+            </div>
+            <div className="mt-2 flex flex-wrap justify-center gap-3">
+              <a
+                href={siteContent.resumePath}
+                download
+                className={buttonVariants({ variant: "primary", className: "gap-2" })}
+              >
+                <Download size={16} /> Download PDF
+              </a>
+              <a
+                href={siteContent.resumePath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonVariants({ variant: "outline", className: "gap-2" })}
+              >
+                <ExternalLink size={16} /> Open in New Tab
+              </a>
+            </div>
+          </CardContent>
+        </Card>
       </section>
 
       <section id="contact" className="scroll-mt-16 mx-auto max-w-3xl px-8 py-20 md:px-16">
