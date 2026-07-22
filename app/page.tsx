@@ -47,7 +47,7 @@ export default async function HomePage() {
         <ProjectsGrid projects={projects} />
       </section>
 
-      <section id="certifications" className="scroll-mt-16 mx-auto max-w-3xl px-8 py-20 md:px-16">
+      <section id="certifications" className="scroll-mt-16 mx-auto max-w-6xl px-8 py-20 md:px-16">
         <h2 className="mb-10 font-display text-4xl italic text-foreground md:text-5xl">
           Certifications
         </h2>

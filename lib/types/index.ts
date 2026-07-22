@@ -21,6 +21,10 @@ export interface Certification {
   credentialUrl: string | null;
   /** Path under /public, e.g. "/certifications/oci-ai-foundations.png". Null until you add the image. */
   imagePath: string | null;
+  /** Skill tags shown as badges, e.g. ["Cloud", "AI"]. Empty until filled in via admin. */
+  tags: string[];
+  /** Highlights this cert with a "Featured" badge on the public site. */
+  featured: boolean;
 }
 
 export interface Skill {

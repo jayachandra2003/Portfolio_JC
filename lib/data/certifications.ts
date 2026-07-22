@@ -24,6 +24,8 @@ export const CERTIFICATION_SEED_DATA: Certification[] = [
     date: UNCONFIRMED_DATE, // TODO: confirm exact issue date
     credentialUrl: null,
     imagePath: "/certifications/oci-ai-foundations.jpg",
+    tags: [], // TODO: add real skill tags via admin panel
+    featured: false,
   },
   {
     id: "genai-essentials",
@@ -32,6 +34,8 @@ export const CERTIFICATION_SEED_DATA: Certification[] = [
     date: UNCONFIRMED_DATE, // TODO: confirm exact issue date
     credentialUrl: null,
     imagePath: "/certifications/genai-essentials.jpg",
+    tags: [], // TODO: add real skill tags via admin panel
+    featured: false,
   },
   {
     id: "hf-agents-course",
@@ -40,6 +44,8 @@ export const CERTIFICATION_SEED_DATA: Certification[] = [
     date: UNCONFIRMED_DATE, // TODO: confirm exact issue date
     credentialUrl: null,
     imagePath: "/certifications/hf-agents-course.jpg",
+    tags: [], // TODO: add real skill tags via admin panel
+    featured: false,
   },
   {
     id: "gemini-academy",
@@ -48,5 +54,7 @@ export const CERTIFICATION_SEED_DATA: Certification[] = [
     date: UNCONFIRMED_DATE, // TODO: confirm exact issue date
     credentialUrl: null,
     imagePath: "/certifications/gemini-academy.jpg",
+    tags: [], // TODO: add real skill tags via admin panel
+    featured: false,
   },
 ];

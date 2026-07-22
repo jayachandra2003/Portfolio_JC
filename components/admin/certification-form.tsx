@@ -25,6 +25,8 @@ export function CertificationForm({ initialCert }: CertificationFormProps) {
   const [date, setDate] = useState(initialCert?.date ?? "");
   const [credentialUrl, setCredentialUrl] = useState(initialCert?.credentialUrl ?? "");
   const [imagePath, setImagePath] = useState(initialCert?.imagePath ?? "");
+  const [tags, setTags] = useState(initialCert?.tags.join(", ") ?? "");
+  const [featured, setFeatured] = useState(initialCert?.featured ?? false);
 
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -40,6 +42,8 @@ export function CertificationForm({ initialCert }: CertificationFormProps) {
       date: date.trim(),
       credentialUrl: credentialUrl.trim() || null,
       imagePath: imagePath.trim() || null,
+      tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
+      featured,
     };
 
     try {
@@ -124,6 +128,26 @@ export function CertificationForm({ initialCert }: CertificationFormProps) {
           Storage backend (by design, to stay on Firebase's free plan).
         </div>
       </div>
+
+      <div>
+        <label className={labelClasses}>Skill tags (comma-separated, optional)</label>
+        <input
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
+          placeholder="Cloud, AI, Machine Learning"
+          className={inputClasses}
+        />
+      </div>
+
+      <label className="flex w-fit items-center gap-2 font-body text-sm text-foreground">
+        <input
+          type="checkbox"
+          checked={featured}
+          onChange={(e) => setFeatured(e.target.checked)}
+          className="h-4 w-4 rounded border-border accent-accent"
+        />
+        Featured certification
+      </label>
 
       {error && (
         <div className="flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 p-3 font-body text-sm text-red-400">

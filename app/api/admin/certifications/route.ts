@@ -11,6 +11,8 @@ const certSchema = z.object({
   date: z.string().trim().min(1),
   credentialUrl: z.string().trim().url().nullable(),
   imagePath: z.string().trim().nullable(),
+  tags: z.array(z.string().trim().min(1)),
+  featured: z.boolean(),
 });
 
 export async function GET(req: NextRequest) {
