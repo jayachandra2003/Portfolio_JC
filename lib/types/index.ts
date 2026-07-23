@@ -25,6 +25,10 @@ export interface Certification {
   tags: string[];
   /** Highlights this cert with a "Featured" badge on the public site. */
   featured: boolean;
+  /** Controls display order (lower = shown first). Certs missing this
+   * field (added before this feature existed) sort to the end rather
+   * than disappearing. */
+  order: number;
 }
 
 export interface Skill {

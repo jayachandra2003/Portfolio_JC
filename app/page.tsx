@@ -29,7 +29,16 @@ export default async function HomePage() {
   ]);
 
   return (
-    <>
+    <div className="relative">
+      {/* Single fixed background layer for the ENTIRE page — this is the
+          fix for the "separate boxes" seam problem. Previously each
+          section had its own gradient-mesh background, and the visible
+          hard edge where one ended and the next began is what looked
+          like disconnected boxes. A fixed layer stays anchored to the
+          viewport as everything scrolls over it, so there's only ever
+          one continuous background, never a seam. */}
+      <div className="gradient-mesh pointer-events-none fixed inset-0 -z-10" />
+
       <div id="home">
         <Hero profile={siteContent} />
       </div>
@@ -114,6 +123,6 @@ export default async function HomePage() {
         </div>
         <ContactForm />
       </section>
-    </>
+    </div>
   );
 }

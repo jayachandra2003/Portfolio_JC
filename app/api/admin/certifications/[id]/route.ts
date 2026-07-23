@@ -12,6 +12,7 @@ const certUpdateSchema = z.object({
   imagePath: z.string().trim().nullable(),
   tags: z.array(z.string().trim().min(1)),
   featured: z.boolean(),
+  order: z.number(),
 });
 
 export async function PUT(

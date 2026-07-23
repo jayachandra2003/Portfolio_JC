@@ -22,8 +22,8 @@ export function ProjectForm({ initialProject }: ProjectFormProps) {
   const [title, setTitle] = useState(initialProject?.title ?? "");
   const [slug, setSlug] = useState(initialProject?.slug ?? "");
   const [description, setDescription] = useState(initialProject?.description ?? "");
-  const [tech, setTech] = useState(initialProject?.tech.join(", ") ?? "");
-  const [features, setFeatures] = useState(initialProject?.features.join("\n") ?? "");
+  const [tech, setTech] = useState(initialProject?.tech?.join(", ") ?? "");
+  const [features, setFeatures] = useState(initialProject?.features?.join("\n") ?? "");
   const [repoUrl, setRepoUrl] = useState(initialProject?.repoUrl ?? "");
   const [demoUrl, setDemoUrl] = useState(initialProject?.demoUrl ?? "");
   const [caseStudySlug, setCaseStudySlug] = useState(initialProject?.caseStudySlug ?? "");

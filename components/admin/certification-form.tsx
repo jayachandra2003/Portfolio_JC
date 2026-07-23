@@ -25,8 +25,9 @@ export function CertificationForm({ initialCert }: CertificationFormProps) {
   const [date, setDate] = useState(initialCert?.date ?? "");
   const [credentialUrl, setCredentialUrl] = useState(initialCert?.credentialUrl ?? "");
   const [imagePath, setImagePath] = useState(initialCert?.imagePath ?? "");
-  const [tags, setTags] = useState(initialCert?.tags.join(", ") ?? "");
+  const [tags, setTags] = useState(initialCert?.tags?.join(", ") ?? "");
   const [featured, setFeatured] = useState(initialCert?.featured ?? false);
+  const [order, setOrder] = useState(initialCert?.order ?? 999);
 
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -44,6 +45,7 @@ export function CertificationForm({ initialCert }: CertificationFormProps) {
       imagePath: imagePath.trim() || null,
       tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
       featured,
+      order: Number(order),
     };
 
     try {
@@ -135,6 +137,19 @@ export function CertificationForm({ initialCert }: CertificationFormProps) {
           value={tags}
           onChange={(e) => setTags(e.target.value)}
           placeholder="Cloud, AI, Machine Learning"
+          className={inputClasses}
+        />
+      </div>
+
+      <div>
+        <label className={labelClasses}>
+          Display order (lower numbers appear first — e.g. 1, 2, 3...)
+        </label>
+        <input
+          type="number"
+          required
+          value={order}
+          onChange={(e) => setOrder(Number(e.target.value))}
           className={inputClasses}
         />
       </div>

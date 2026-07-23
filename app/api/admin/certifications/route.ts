@@ -13,6 +13,7 @@ const certSchema = z.object({
   imagePath: z.string().trim().nullable(),
   tags: z.array(z.string().trim().min(1)),
   featured: z.boolean(),
+  order: z.number(),
 });
 
 export async function GET(req: NextRequest) {

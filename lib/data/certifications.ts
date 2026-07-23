@@ -1,4 +1,4 @@
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
 import type { Certification } from "@/lib/types";
 
@@ -10,9 +10,15 @@ const COLLECTION = "certifications";
 export const UNCONFIRMED_DATE = "2025-01-01";
 
 export async function getCertifications(): Promise<Certification[]> {
-  const q = query(collection(db, COLLECTION), orderBy("date", "desc"));
+  // Deliberately no orderBy("order") here — Firestore's orderBy excludes
+  // documents that don't have that field at all, which would silently
+  // hide any certification added before this field existed. Sorting in
+  // code guarantees nothing disappears; certs missing "order" just sort
+  // to the end via the ?? 999 fallback below.
+  const q = query(collection(db, COLLECTION));
   const snapshot = await getDocs(q);
-  return snapshot.docs.map((doc) => doc.data() as Certification);
+  const certifications = snapshot.docs.map((doc) => doc.data() as Certification);
+  return certifications.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 }
 
 /** Seed data — run once via the Phase 4 seed script. */
@@ -26,6 +32,7 @@ export const CERTIFICATION_SEED_DATA: Certification[] = [
     imagePath: "/certifications/oci-ai-foundations.jpg",
     tags: [], // TODO: add real skill tags via admin panel
     featured: false,
+    order: 1,
   },
   {
     id: "genai-essentials",
@@ -36,6 +43,7 @@ export const CERTIFICATION_SEED_DATA: Certification[] = [
     imagePath: "/certifications/genai-essentials.jpg",
     tags: [], // TODO: add real skill tags via admin panel
     featured: false,
+    order: 2,
   },
   {
     id: "hf-agents-course",
@@ -46,6 +54,7 @@ export const CERTIFICATION_SEED_DATA: Certification[] = [
     imagePath: "/certifications/hf-agents-course.jpg",
     tags: [], // TODO: add real skill tags via admin panel
     featured: false,
+    order: 3,
   },
   {
     id: "gemini-academy",
@@ -56,5 +65,6 @@ export const CERTIFICATION_SEED_DATA: Certification[] = [
     imagePath: "/certifications/gemini-academy.jpg",
     tags: [], // TODO: add real skill tags via admin panel
     featured: false,
+    order: 4,
   },
 ];
