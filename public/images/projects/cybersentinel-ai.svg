@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sentinelBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1917"/>
+      <stop offset="50%" stop-color="#0f2924"/>
+      <stop offset="100%" stop-color="#071210"/>
+    </linearGradient>
+    <linearGradient id="sentinelEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#sentinelBg)" rx="12"/>
+
+  <!-- Matrix/Grid Lines -->
+  <g opacity="0.12" stroke="#10b981" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="270" x2="800" y2="270"/>
+    <line x1="0" y1="360" x2="800" y2="360"/>
+    <line x1="160" y1="0" x2="160" y2="450"/>
+    <line x1="320" y1="0" x2="320" y2="450"/>
+    <line x1="480" y1="0" x2="480" y2="450"/>
+    <line x1="640" y1="0" x2="640" y2="450"/>
+  </g>
+
+  <!-- Central Defensive Sentinel Shield -->
+  <g transform="translate(150, 100)">
+    <path d="M 90 20 L 170 50 C 170 140, 90 190, 90 190 C 90 190, 10 140, 10 50 Z" 
+          fill="#064e3b" fill-opacity="0.75" stroke="#10b981" stroke-width="2.5"/>
+    <path d="M 90 40 L 150 65 C 150 130, 90 170, 90 170 C 90 170, 30 130, 30 65 Z" 
+          fill="none" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.8"/>
+    <!-- Terminal prompt inside shield -->
+    <text x="60" y="115" fill="#34d399" font-family="monospace" font-size="24" font-weight="700">&gt;_</text>
+  </g>
+
+  <!-- Right Architecture & Metrics Panel -->
+  <rect x="400" y="90" width="310" height="250" rx="8" fill="#022c22" fill-opacity="0.9" stroke="#059669" stroke-width="1.5"/>
+  <text x="425" y="120" fill="#34d399" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">DEFENSIVE PLATFORM POSTURE</text>
+
+  <g transform="translate(425, 140)">
+    <!-- Security Score Gauge -->
+    <rect x="0" y="0" width="260" height="38" rx="6" fill="#064e3b" fill-opacity="0.6" stroke="#10b981" stroke-width="1"/>
+    <text x="15" y="24" fill="#a7f3d0" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Compliance &amp; Vulnerability Score</text>
+    <text x="215" y="25" fill="#34d399" font-family="system-ui, sans-serif" font-size="14" font-weight="800">A+</text>
+
+    <!-- Async Stack Highlights -->
+    <g transform="translate(0, 52)">
+      <rect x="0" y="0" width="125" height="42" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="10" y="18" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">API ENGINE</text>
+      <text x="10" y="34" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12" font-weight="600">FastAPI + Async</text>
+
+      <rect x="135" y="0" width="125" height="42" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="145" y="18" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">TASK QUEUE</text>
+      <text x="145" y="34" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Celery + Redis</text>
+    </g>
+
+    <!-- Observability Footer Tag -->
+    <rect x="0" y="108" width="260" height="30" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-width="1"/>
+    <text x="12" y="128" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="11" font-weight="600">&#9679; Prometheus Metrics &amp; OpenTelemetry</text>
+  </g>
+</svg>

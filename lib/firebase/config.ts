@@ -1,5 +1,6 @@
 import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
 import { getFirestore, type Firestore } from "firebase/firestore";
+import { getAuth, type Auth } from "firebase/auth";
 
 // All values come from env vars — never hardcode Firebase config.
 // See .env.example for the required keys.
@@ -15,5 +16,6 @@ const firebaseConfig = {
 
 const app: FirebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const db: Firestore = getFirestore(app);
+const auth: Auth = getAuth(app);
 
-export { app, db };
+export { app, db, auth };

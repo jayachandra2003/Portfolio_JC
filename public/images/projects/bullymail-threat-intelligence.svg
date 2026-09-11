@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bullyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12101f"/>
+      <stop offset="50%" stop-color="#1c1633"/>
+      <stop offset="100%" stop-color="#0a0814"/>
+    </linearGradient>
+    <linearGradient id="threatGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bullyBg)" rx="12"/>
+  
+  <!-- Subtle Hex Grid / Circuit lines -->
+  <g opacity="0.1" stroke="#c084fc" stroke-width="1">
+    <path d="M 50 100 L 200 100 L 250 150 L 550 150 L 600 100 L 750 100"/>
+    <path d="M 50 250 L 150 250 L 220 320 L 580 320 L 650 250 L 750 250"/>
+    <circle cx="200" cy="100" r="3" fill="#c084fc"/>
+    <circle cx="550" cy="150" r="3" fill="#c084fc"/>
+    <circle cx="220" cy="320" r="3" fill="#c084fc"/>
+  </g>
+
+  <!-- Mail Threat Shield Central Icon -->
+  <g transform="translate(140, 110)">
+    <!-- Email Base Plate -->
+    <rect x="0" y="20" width="220" height="150" rx="8" fill="#1e1b2e" stroke="#9333ea" stroke-width="2"/>
+    <path d="M 0 20 L 110 105 L 220 20" fill="none" stroke="#a855f7" stroke-width="2"/>
+    
+    <!-- Shield Overlay -->
+    <path d="M 110 30 L 160 50 C 160 110, 110 145, 110 145 C 110 145, 60 110, 60 50 Z" 
+          fill="#581c87" fill-opacity="0.85" stroke="#c084fc" stroke-width="2"/>
+    <!-- Warning exclamation -->
+    <text x="105" y="95" fill="#f43f5e" font-family="system-ui, sans-serif" font-size="28" font-weight="900">!</text>
+  </g>
+
+  <!-- SOC Threat Intelligence Radar / Breakdown -->
+  <rect x="420" y="95" width="280" height="240" rx="8" fill="#0f172a" fill-opacity="0.92" stroke="#475569" stroke-width="1.5"/>
+  <text x="445" y="125" fill="#c084fc" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">MULTI-VECTOR SOC TELEMETRY</text>
+  
+  <g transform="translate(445, 145)">
+    <!-- Threat vector bars -->
+    <text x="0" y="12" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Cyberbullying NLP (TF-IDF/SVC)</text>
+    <rect x="0" y="18" width="230" height="6" rx="3" fill="#334155"/>
+    <rect x="0" y="18" width="195" height="6" rx="3" fill="url(#threatGrad)"/>
+
+    <text x="0" y="42" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Phishing &amp; Typosquatting</text>
+    <rect x="0" y="48" width="230" height="6" rx="3" fill="#334155"/>
+    <rect x="0" y="48" width="210" height="6" rx="3" fill="url(#threatGrad)"/>
+
+    <text x="0" y="72" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Social Engineering Detection</text>
+    <rect x="0" y="78" width="230" height="6" rx="3" fill="#334155"/>
+    <rect x="0" y="78" width="170" height="6" rx="3" fill="url(#threatGrad)"/>
+
+    <text x="0" y="102" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Attachment Magic Bytes Forensics</text>
+    <rect x="0" y="108" width="230" height="6" rx="3" fill="#334155"/>
+    <rect x="0" y="108" width="185" height="6" rx="3" fill="url(#threatGrad)"/>
+
+    <rect x="0" y="130" width="230" height="28" rx="4" fill="#a855f7" fill-opacity="0.15" stroke="#a855f7" stroke-width="1"/>
+    <text x="12" y="148" fill="#e9d5ff" font-family="system-ui, sans-serif" font-size="11" font-weight="600">&#9679; Fernet AES-128 Encrypted Ingestion</text>
+  </g>
+</svg>

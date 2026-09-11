@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Portfolio content — safe to be publicly readable (it's a public
+    // portfolio site). Writes are blocked entirely from the client; the
+    // only way data gets written is the local Admin SDK seed script
+    // (scripts/seed.ts), which authenticates via a service account and
+    // bypasses these rules altogether.
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /certifications/{certId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /siteContent/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Deny everything else by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

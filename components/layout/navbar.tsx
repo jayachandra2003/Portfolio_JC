@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -8,27 +8,62 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { NAV_LINKS } from "@/lib/data/socials";
 import { cn } from "@/lib/utils";
 
+// The section ids that exist on the single-scroll home page. Used to
+// detect which section is currently in view for active-link highlighting.
+// Nav links point to "/#id", so on OTHER pages (e.g. the SkyWrite case
+// study, admin pages) these ids simply don't exist — the observer below
+// just finds nothing to watch, which is fine, it means no link highlights.
+const SECTION_IDS = ["home", "about", "skills", "projects", "certifications", "resume", "contact"];
+
 export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection(null);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      // Treat a section as "active" once it crosses the vertical center
+      // of the viewport, not just any partial overlap.
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
+    );
+
+    const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [pathname]);
 
   return (
-    <header className="glass sticky top-0 z-50 w-full">
-      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <Link href="/" className="font-display text-lg italic text-foreground">
+    <header className="sticky top-0 z-50 w-full liquid-glass border-b border-white/10 transition-colors duration-300">
+      <nav className="mx-auto flex h-20 max-w-[1560px] items-center justify-between px-6 sm:px-8 lg:px-8 xl:px-10">
+        <Link href="/#home" className="font-display text-2xl sm:text-[1.65rem] italic text-foreground transition-colors hover:text-accent">
           Jaya Chandra
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-8 md:flex lg:gap-10">
           {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href;
+            const sectionId = link.href.split("#")[1];
+            const isActive = activeSection === sectionId;
             return (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={cn(
-                    "font-body text-sm transition-colors hover:text-accent",
+                    "font-body text-base font-medium transition-colors hover:text-accent",
                     isActive ? "text-accent" : "text-muted-foreground"
                   )}
                 >
@@ -42,21 +77,21 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <button
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile nav */}
       {mobileOpen && (
         <ul className="glass flex flex-col gap-1 border-t border-border px-6 py-4 md:hidden">
           {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href;
+            const sectionId = link.href.split("#")[1];
+            const isActive = activeSection === sectionId;
             return (
               <li key={link.href}>
                 <Link

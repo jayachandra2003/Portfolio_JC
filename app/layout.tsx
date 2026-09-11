@@ -3,6 +3,7 @@ import { fontDisplay, fontBody } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { FluidBackground } from "@/components/ui/fluid-background";
 import "./globals.css";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -68,8 +69,9 @@ export default function RootLayout({
           Skip to content
         </a>
         <ThemeProvider>
+          <FluidBackground />
           <Navbar />
-          <main id="main-content" className="min-h-[calc(100vh-4rem)]">{children}</main>
+          <main id="main-content" className="min-h-[calc(100vh-5rem)]">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

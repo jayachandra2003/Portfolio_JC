@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1329"/>
+      <stop offset="50%" stop-color="#101e3d"/>
+      <stop offset="100%" stop-color="#090d1a"/>
+    </linearGradient>
+    <linearGradient id="skyCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="skyGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#skyBg)" rx="12"/>
+  
+  <g opacity="0.12" stroke="#38bdf8" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="300" y1="0" x2="300" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="500" y1="0" x2="500" y2="450"/>
+    <line x1="600" y1="0" x2="600" y2="450"/>
+    <line x1="700" y1="0" x2="700" y2="450"/>
+    <line x1="0" y1="75" x2="800" y2="75"/>
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="225" x2="800" y2="225"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="375" x2="800" y2="375"/>
+  </g>
+
+  <circle cx="400" cy="225" r="160" fill="none" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="6 6" opacity="0.25"/>
+  <circle cx="400" cy="225" r="110" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.15"/>
+
+  <g stroke="#38bdf8" stroke-width="2" opacity="0.65">
+    <line x1="340" y1="310" x2="310" y2="360"/>
+    <line x1="310" y1="360" x2="410" y2="370"/>
+    <line x1="410" y1="370" x2="440" y2="320"/>
+    <line x1="340" y1="310" x2="320" y2="250"/>
+    <line x1="320" y1="250" x2="305" y2="200"/>
+    <line x1="370" y1="300" x2="365" y2="220"/>
+    <line x1="365" y1="220" x2="360" y2="150"/>
+    <line x1="400" y1="305" x2="405" y2="235"/>
+    <line x1="405" y1="235" x2="410" y2="185"/>
+    <line x1="425" y1="312" x2="435" y2="250"/>
+    <line x1="440" y1="320" x2="455" y2="270"/>
+  </g>
+
+  <g fill="#06b6d4">
+    <circle cx="310" cy="360" r="4"/>
+    <circle cx="410" cy="370" r="4"/>
+    <circle cx="340" cy="310" r="4"/>
+    <circle cx="370" cy="300" r="4"/>
+    <circle cx="400" cy="305" r="4"/>
+    <circle cx="425" cy="312" r="4"/>
+    <circle cx="440" cy="320" r="4"/>
+    <circle cx="320" cy="250" r="4"/>
+    <circle cx="305" cy="200" r="4"/>
+    <circle cx="365" cy="220" r="4"/>
+    <circle cx="405" cy="235" r="4"/>
+    <circle cx="410" cy="185" r="4"/>
+    <circle cx="435" cy="250" r="4"/>
+    <circle cx="455" cy="270" r="4"/>
+    <circle cx="360" cy="150" r="7" fill="#38bdf8" filter="url(#skyGlow)"/>
+    <circle cx="360" cy="150" r="14" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.7"/>
+  </g>
+
+  <path d="M 360 150 C 420 120, 520 130, 560 180 C 600 230, 530 300, 480 270 C 440 245, 550 210, 620 220" 
+        fill="none" stroke="url(#skyCyan)" stroke-width="4" stroke-linecap="round" filter="url(#skyGlow)"/>
+
+  <rect x="520" y="70" width="220" height="64" rx="8" fill="#0f172a" fill-opacity="0.9" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="540" y="95" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="1">GESTURE RECOGNITION</text>
+  <text x="540" y="118" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="16" font-weight="700">CNN Accuracy: ~87%</text>
+
+  <rect x="60" y="380" width="240" height="34" rx="6" fill="#0f172a" fill-opacity="0.85" stroke="#334155" stroke-width="1"/>
+  <text x="75" y="402" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="600">&#9679; 21-Point MediaPipe Tracking</text>
+</svg>

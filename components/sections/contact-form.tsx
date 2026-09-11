@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Paperclip, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+const MAX_FILE_SIZE_BYTES = 3 * 1024 * 1024; // 3MB — see route.ts for why
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -16,9 +18,25 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      // result looks like "data:application/pdf;base64,JVBERi0...."
+      // — strip the prefix, Resend just wants the raw base64 content.
+      const result = reader.result as string;
+      resolve(result.split(",")[1] ?? "");
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [attachment, setAttachment] = useState<File | null>(null);
+  const [attachmentError, setAttachmentError] = useState<string | null>(null);
 
   const {
     register,
@@ -27,19 +45,46 @@ export function ContactForm() {
     formState: { errors },
   } = useForm<ContactFormValues>({ resolver: zodResolver(contactSchema) });
 
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      setAttachmentError(`File is too large — max 3MB (yours is ${(file.size / 1024 / 1024).toFixed(1)}MB)`);
+      setAttachment(null);
+      e.target.value = "";
+      return;
+    }
+    setAttachmentError(null);
+    setAttachment(file);
+  }
+
   async function onSubmit(values: ContactFormValues) {
     setStatus("submitting");
     setErrorMessage(null);
     try {
+      const payload: ContactFormValues & {
+        attachment?: { filename: string; contentType: string; contentBase64: string };
+      } = { ...values };
+
+      if (attachment) {
+        payload.attachment = {
+          filename: attachment.name,
+          contentType: attachment.type,
+          contentBase64: await fileToBase64(attachment),
+        };
+      }
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify(payload),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Something went wrong");
       setStatus("success");
       reset();
+      setAttachment(null);
     } catch (err) {
       setStatus("error");
       setErrorMessage(err instanceof Error ? err.message : "Something went wrong");
@@ -47,17 +92,19 @@ export function ContactForm() {
   }
 
   const inputClasses =
-    "w-full rounded-lg border border-border bg-card px-4 py-2.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
+    "w-full rounded-xl border border-border/80 bg-background/50 px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground transition-all focus:border-accent/60 focus:bg-background/80 focus:outline-none focus:ring-2 focus:ring-accent/20";
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-10 text-center">
-        <CheckCircle2 className="text-accent" size={32} />
-        <p className="font-display text-xl text-card-foreground">Message sent</p>
+      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card/60 p-8 text-center">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent">
+          <CheckCircle2 size={28} />
+        </div>
+        <p className="font-display text-2xl text-card-foreground">Message Sent!</p>
         <p className="font-body text-sm text-muted-foreground">
-          Thanks for reaching out — I&apos;ll get back to you soon.
+          Thanks for reaching out — I&apos;ll get back to you as soon as possible.
         </p>
-        <Button variant="outline" size="sm" onClick={() => setStatus("idle")}>
+        <Button variant="outline" size="sm" onClick={() => setStatus("idle")} className="mt-2">
           Send another message
         </Button>
       </div>
@@ -65,7 +112,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex max-w-lg flex-col gap-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-4">
       <div>
         <label htmlFor="name" className="sr-only">Your name</label>
         <input
@@ -95,15 +142,57 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="message" className="sr-only">Your message</label>
-        <textarea
-          id="message"
-          {...register("message")}
-          placeholder="Your message"
-          rows={5}
-          className={cn(inputClasses, "resize-none", errors.message && "ring-2 ring-red-500/50")}
-        />
+        <div className="relative">
+          <textarea
+            id="message"
+            {...register("message")}
+            placeholder="Your message"
+            rows={5}
+            className={cn(
+              inputClasses,
+              "resize-none pr-11", // reserve space so text doesn't run under the icon
+              errors.message && "ring-2 ring-red-500/50"
+            )}
+          />
+
+          {/* Attachment trigger — sits inside the textarea, WhatsApp-style */}
+          <label
+            htmlFor="attachment"
+            className="absolute bottom-2.5 right-2.5 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full text-muted-foreground hover:bg-card hover:text-accent"
+            aria-label="Attach a file"
+            title="Attach a file (max 3MB)"
+          >
+            <Paperclip size={16} />
+          </label>
+          <input
+            id="attachment"
+            type="file"
+            onChange={handleFileChange}
+            className="sr-only"
+          />
+        </div>
+
         {errors.message && (
           <p className="mt-1 font-body text-xs text-red-400">{errors.message.message}</p>
+        )}
+
+        {/* Selected file shown as a small removable chip, WhatsApp-style preview */}
+        {attachment && (
+          <div className="mt-2 flex w-fit items-center gap-2 rounded-full border border-border bg-card px-3 py-1 font-body text-xs text-muted-foreground">
+            <Paperclip size={12} />
+            <span className="max-w-[200px] truncate">{attachment.name}</span>
+            <button
+              type="button"
+              onClick={() => setAttachment(null)}
+              aria-label="Remove attachment"
+              className="text-muted-foreground hover:text-red-400"
+            >
+              <X size={12} />
+            </button>
+          </div>
+        )}
+        {attachmentError && (
+          <p className="mt-1 font-body text-xs text-red-400">{attachmentError}</p>
         )}
       </div>
 
@@ -114,7 +203,12 @@ export function ContactForm() {
         </div>
       )}
 
-      <Button type="submit" variant="primary" disabled={status === "submitting"} className="gap-2">
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={status === "submitting"}
+        className="w-full gap-2 py-3 font-body text-sm font-semibold shadow-md"
+      >
         {status === "submitting" ? "Sending..." : (
           <>
             <Send size={16} /> Send Message
