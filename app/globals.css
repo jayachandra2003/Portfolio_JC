@@ -9,16 +9,16 @@
   All colors as H S% L% triples so Tailwind's hsl(var(--x)) usage works.
 */
 :root {
-  --background: 220 22% 7%;
-  --foreground: 40 25% 95%;
-  --card: 220 20% 10%;
-  --card-foreground: 40 20% 92%;
-  --border: 220 16% 18%;
-  --muted: 220 10% 60%;
-  --muted-foreground: 220 8% 68%;
-  --accent: 168 55% 45%;
-  --accent-foreground: 220 22% 7%;
-  --ring: 168 55% 45%;
+  --background: 222 30% 9%;
+  --foreground: 210 25% 96%;
+  --card: 222 26% 13%;
+  --card-foreground: 210 20% 94%;
+  --border: 220 20% 20%;
+  --muted: 215 15% 65%;
+  --muted-foreground: 215 15% 72%;
+  --accent: 168 72% 48%;
+  --accent-foreground: 222 30% 9%;
+  --ring: 168 72% 48%;
 
   --radius: 0.75rem;
 }
@@ -32,9 +32,9 @@
   --border: 220 15% 88%;
   --muted: 220 10% 40%;
   --muted-foreground: 220 8% 35%;
-  --accent: 168 60% 32%;
+  --accent: 168 65% 34%;
   --accent-foreground: 40 30% 98%;
-  --ring: 168 60% 32%;
+  --ring: 168 65% 34%;
 }
 
 * {
@@ -43,6 +43,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100vw;
 }
 
 body {
@@ -50,6 +52,8 @@ body {
   color: hsl(var(--foreground));
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 h1, h2, h3, h4 {
@@ -59,17 +63,107 @@ h1, h2, h3, h4 {
 /* Glassmorphism utility — used for nav bar, cards, floating panels */
 .glass {
   background-color: hsl(var(--card) / 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid hsl(var(--border) / 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid hsl(var(--border) / 0.5);
 }
 
-/* Subtle radial gradient mesh for hero/section backgrounds — no purple-on-white cliché */
+/* 
+  Apple / iOS Liquid Glass Design Tokens 
+  Features multi-layer specular rim lighting, deep optical blur (24px), 
+  chromatic saturation boost, and dynamic fluid refraction.
+*/
+.liquid-glass {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--card) / 0.72) 0%,
+    hsl(var(--card) / 0.50) 100%
+  );
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid hsl(0 0% 100% / 0.10);
+  box-shadow:
+    0 12px 36px -10px hsl(0 0% 0% / 0.45),
+    inset 0 1px 1px 0 hsl(0 0% 100% / 0.16),
+    inset 0 0 20px 0 hsl(var(--accent) / 0.03);
+}
+
+.liquid-glass-interactive {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--card) / 0.75) 0%,
+    hsl(var(--card) / 0.52) 100%
+  );
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid hsl(0 0% 100% / 0.10);
+  box-shadow:
+    0 10px 30px -8px hsl(0 0% 0% / 0.4),
+    inset 0 1px 1px 0 hsl(0 0% 100% / 0.18),
+    inset 0 0 16px 0 hsl(var(--accent) / 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-interactive:hover {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--card) / 0.84) 0%,
+    hsl(var(--card) / 0.62) 100%
+  );
+  border-color: hsl(var(--accent) / 0.45);
+  box-shadow:
+    0 20px 48px -10px hsl(0 0% 0% / 0.55),
+    0 0 28px 0 hsl(var(--accent) / 0.15),
+    inset 0 1px 1px 0 hsl(0 0% 100% / 0.30),
+    inset 0 0 24px 0 hsl(var(--accent) / 0.08);
+}
+
+/* Light Mode Liquid Glass Overrides */
+.light .liquid-glass {
+  background: linear-gradient(
+    135deg,
+    hsl(0 0% 100% / 0.82) 0%,
+    hsl(0 0% 100% / 0.58) 100%
+  );
+  border-color: hsl(220 20% 50% / 0.16);
+  box-shadow:
+    0 10px 30px -8px hsl(220 20% 50% / 0.14),
+    inset 0 1px 1px 0 hsl(0 0% 100% / 0.9);
+}
+
+.light .liquid-glass-interactive {
+  background: linear-gradient(
+    135deg,
+    hsl(0 0% 100% / 0.84) 0%,
+    hsl(0 0% 100% / 0.60) 100%
+  );
+  border-color: hsl(220 20% 50% / 0.16);
+  box-shadow:
+    0 10px 28px -8px hsl(220 20% 50% / 0.14),
+    inset 0 1px 1px 0 hsl(0 0% 100% / 0.9);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light .liquid-glass-interactive:hover {
+  background: linear-gradient(
+    135deg,
+    hsl(0 0% 100% / 0.94) 0%,
+    hsl(0 0% 100% / 0.72) 100%
+  );
+  border-color: hsl(var(--accent) / 0.45);
+  box-shadow:
+    0 18px 40px -10px hsl(220 20% 50% / 0.22),
+    0 0 24px 0 hsl(var(--accent) / 0.16),
+    inset 0 1px 1px 0 hsl(0 0% 100% / 1);
+}
+
+/* Balanced atmospheric ambient background glow — soft, diffused, no harsh puddles */
 .gradient-mesh {
   background-image:
-    radial-gradient(circle at 20% 20%, hsl(var(--accent) / 0.15), transparent 40%),
-    radial-gradient(circle at 80% 0%, hsl(168 40% 30% / 0.12), transparent 45%),
-    radial-gradient(circle at 50% 100%, hsl(220 30% 20% / 0.4), transparent 60%);
+    radial-gradient(ellipse 70% 50% at 50% 20%, hsl(168 70% 45% / 0.16), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 85% 35%, hsl(195 80% 45% / 0.14), transparent 55%),
+    radial-gradient(ellipse 65% 50% at 20% 65%, hsl(168 65% 42% / 0.13), transparent 60%),
+    radial-gradient(ellipse 70% 55% at 75% 85%, hsl(225 65% 55% / 0.14), transparent 60%);
 }
 
 ::selection {

@@ -61,9 +61,9 @@ async function main() {
   await db.collection("siteContent").doc("main").set(SITE_CONTENT_SEED_DATA);
   console.log("✅ Seeded site content (Hero/About/Resume text)");
 
-  console.log("Done. Note: Fabric Marketplace repoUrl, Python Mini Projects");
-  console.log("repoUrl, and certification dates are still null/placeholder —");
-  console.log("re-run this script after updating lib/data/*.ts with real values.");
+  console.log("Done. Note: Fabric Marketplace repoUrl and certification");
+  console.log("dates are still null/placeholder — re-run this script after updating");
+  console.log("lib/data/*.ts with real values.");
   process.exit(0);
 }
 

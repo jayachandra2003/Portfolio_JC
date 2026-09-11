@@ -9,9 +9,16 @@ const COLLECTION = "projects";
  * Components must call this — never import `db` or touch Firestore directly.
  */
 export async function getProjects(): Promise<Project[]> {
-  const q = query(collection(db, COLLECTION), orderBy("order", "asc"));
-  const snapshot = await getDocs(q);
-  return snapshot.docs.map((doc) => doc.data() as Project);
+  try {
+    const q = query(collection(db, COLLECTION), orderBy("order", "asc"));
+    const snapshot = await getDocs(q);
+    if (snapshot.empty) {
+      return PROJECT_SEED_DATA;
+    }
+    return snapshot.docs.map((doc) => doc.data() as Project);
+  } catch {
+    return PROJECT_SEED_DATA;
+  }
 }
 
 export async function getFeaturedProject(): Promise<Project | null> {
@@ -28,9 +35,6 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
  * Seed data for the `projects` Firestore collection. Run once via the
  * seed script (Phase 4) to populate Firestore — this is source-of-truth
  * content, not a fallback used at runtime.
- *
- * NOTE: Fabric Marketplace repoUrl is intentionally `null`, not a fake
- * link — that URL hasn't been confirmed yet. Fill it in before seeding.
  */
 export const PROJECT_SEED_DATA: Project[] = [
   {
@@ -66,28 +70,69 @@ export const PROJECT_SEED_DATA: Project[] = [
       "Authentication",
       "Full CRUD across roles",
     ],
-    repoUrl: null, // TODO: confirm and add repo URL before seeding Firestore
+    repoUrl: null,
     demoUrl: null,
     featured: false,
     order: 2,
   },
   {
-    id: "python-mini-projects",
-    slug: "python-mini-projects",
-    title: "Python Mini Projects",
+    id: "bullymail-threat-intelligence",
+    slug: "bullymail-threat-intelligence",
+    title: "BullyMail-Threat-Intelligence",
     description:
-      "A collection of five small Python projects covering automation, games, and utilities.",
-    tech: ["Python"],
-    features: [
-      "Pomodoro Timer",
-      "Password Manager",
-      "Snake Game",
-      "Hangman",
-      "LinkedIn Automation",
+      "An enterprise digital forensic email threat intelligence and cyberbullying detection platform with multi-vector threat decomposition, hybrid ML analysis, and SOC operations.",
+    tech: [
+      "Python",
+      "Flask",
+      "Scikit-learn",
+      "NLP",
+      "Linear SVC",
+      "Logistic Regression",
+      "MySQL",
+      "SQLite",
+      "Fernet AES-128",
+      "Pytest",
     ],
-    repoUrl: null, // TODO: add repo URL(s) — combined card, may need multiple links
+    features: [
+      "Multi-vector forensic decomposition (NLP Cyberbullying, Phishing, Social Engineering, Attachment Malware, Image Forensics)",
+      "Supervised ML text classification with TF-IDF, Linear SVC, and Logistic Regression",
+      "Phishing & typosquatting detection with normalized Levenshtein distance and URL Shannon entropy",
+      "Static attachment forensics with magic byte verification and double-extension detection",
+      "SOC dashboard with explainable risk aggregation and calibrated threat scoring",
+    ],
+    repoUrl: "https://github.com/jayachandra2003/BullyMail-Threat-Intelligence",
     demoUrl: null,
     featured: false,
     order: 3,
+  },
+  {
+    id: "cybersentinel-ai",
+    slug: "cybersentinel-ai",
+    title: "CyberSentinel-AI",
+    description:
+      "An enterprise-grade defensive cybersecurity and compliance platform for authorized domain security posture assessment, vulnerability scanning, and reporting.",
+    tech: [
+      "FastAPI",
+      "Python",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Celery",
+      "Redis",
+      "Docker",
+    ],
+    features: [
+      "Interface-driven modular scanner framework with clean SOLID architecture",
+      "Asynchronous security scan orchestration & reporting powered by Celery and Redis",
+      "Comprehensive domain security posture, compliance, and vulnerability evaluations",
+      "Enterprise observability with structured JSON logging, Prometheus metrics, and OpenTelemetry",
+      "Multi-stage Docker containerization and automated CI/CD security workflows",
+    ],
+    repoUrl: "https://github.com/jayachandra2003/CyberSentinel-AI",
+    demoUrl: null,
+    featured: false,
+    order: 4,
   },
 ];

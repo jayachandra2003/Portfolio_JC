@@ -5,8 +5,8 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border px-6 py-10">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 md:flex-row">
+    <footer className="border-t border-border py-10">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 sm:px-8 lg:px-10 md:flex-row">
         <p className="font-body text-sm text-muted-foreground">
           © {year} Vennam Jaya Chandra. All rights reserved.
         </p>

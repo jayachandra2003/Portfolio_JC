@@ -92,17 +92,19 @@ export function ContactForm() {
   }
 
   const inputClasses =
-    "w-full rounded-lg border border-border bg-card px-4 py-2.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
+    "w-full rounded-xl border border-border/80 bg-background/50 px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground transition-all focus:border-accent/60 focus:bg-background/80 focus:outline-none focus:ring-2 focus:ring-accent/20";
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-10 text-center">
-        <CheckCircle2 className="text-accent" size={32} />
-        <p className="font-display text-xl text-card-foreground">Message sent</p>
+      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card/60 p-8 text-center">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent">
+          <CheckCircle2 size={28} />
+        </div>
+        <p className="font-display text-2xl text-card-foreground">Message Sent!</p>
         <p className="font-body text-sm text-muted-foreground">
-          Thanks for reaching out — I&apos;ll get back to you soon.
+          Thanks for reaching out — I&apos;ll get back to you as soon as possible.
         </p>
-        <Button variant="outline" size="sm" onClick={() => setStatus("idle")}>
+        <Button variant="outline" size="sm" onClick={() => setStatus("idle")} className="mt-2">
           Send another message
         </Button>
       </div>
@@ -110,7 +112,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex max-w-lg flex-col gap-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-4">
       <div>
         <label htmlFor="name" className="sr-only">Your name</label>
         <input
@@ -201,7 +203,12 @@ export function ContactForm() {
         </div>
       )}
 
-      <Button type="submit" variant="primary" disabled={status === "submitting"} className="gap-2">
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={status === "submitting"}
+        className="w-full gap-2 py-3 font-body text-sm font-semibold shadow-md"
+      >
         {status === "submitting" ? "Sending..." : (
           <>
             <Send size={16} /> Send Message

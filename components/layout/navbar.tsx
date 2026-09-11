@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 // Nav links point to "/#id", so on OTHER pages (e.g. the SkyWrite case
 // study, admin pages) these ids simply don't exist — the observer below
 // just finds nothing to watch, which is fine, it means no link highlights.
-const SECTION_IDS = ["home", "about", "projects", "certifications", "resume", "contact"];
+const SECTION_IDS = ["home", "about", "skills", "projects", "certifications", "resume", "contact"];
 
 export function Navbar() {
   const pathname = usePathname();
@@ -48,13 +48,13 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="glass sticky top-0 z-50 w-full">
-      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <Link href="/#home" className="font-display text-lg italic text-foreground">
+    <header className="sticky top-0 z-50 w-full liquid-glass border-b border-white/10 transition-colors duration-300">
+      <nav className="mx-auto flex h-20 max-w-[1560px] items-center justify-between px-6 sm:px-8 lg:px-8 xl:px-10">
+        <Link href="/#home" className="font-display text-2xl sm:text-[1.65rem] italic text-foreground transition-colors hover:text-accent">
           Jaya Chandra
         </Link>
 
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-8 md:flex lg:gap-10">
           {NAV_LINKS.map((link) => {
             const sectionId = link.href.split("#")[1];
             const isActive = activeSection === sectionId;
@@ -63,7 +63,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   className={cn(
-                    "font-body text-sm transition-colors hover:text-accent",
+                    "font-body text-base font-medium transition-colors hover:text-accent",
                     isActive ? "text-accent" : "text-muted-foreground"
                   )}
                 >
@@ -77,12 +77,12 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <button
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </nav>

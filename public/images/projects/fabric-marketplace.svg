@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="fabBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="50%" stop-color="#1e2436"/>
+      <stop offset="100%" stop-color="#0e111a"/>
+    </linearGradient>
+    <linearGradient id="fabAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <pattern id="weavePattern" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 0 12 L 24 12 M 12 0 L 12 24" stroke="#475569" stroke-width="1.5" opacity="0.25"/>
+      <circle cx="12" cy="12" r="1.5" fill="#64748b" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#fabBg)" rx="12"/>
+  
+  <!-- Textile Weave Base -->
+  <rect x="80" y="60" width="640" height="330" fill="url(#weavePattern)" rx="8" stroke="#334155" stroke-width="1"/>
+
+  <!-- AI Inspection Scanner Box -->
+  <rect x="220" y="110" width="240" height="200" rx="6" fill="#f59e0b" fill-opacity="0.06" stroke="#f59e0b" stroke-width="2" stroke-dasharray="8 6"/>
+  
+  <!-- Corner Reticles -->
+  <path d="M 215 130 L 215 105 L 240 105" stroke="#f59e0b" stroke-width="3" fill="none"/>
+  <path d="M 465 130 L 465 105 L 440 105" stroke="#f59e0b" stroke-width="3" fill="none"/>
+  <path d="M 215 290 L 215 315 L 240 315" stroke="#f59e0b" stroke-width="3" fill="none"/>
+  <path d="M 465 290 L 465 315 L 440 315" stroke="#f59e0b" stroke-width="3" fill="none"/>
+
+  <!-- Defect Anomaly Highlight -->
+  <ellipse cx="330" cy="200" rx="35" ry="25" fill="#ef4444" fill-opacity="0.25" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="330" cy="200" r="4" fill="#ef4444"/>
+
+  <!-- Defect Detection Tag -->
+  <rect x="235" y="85" width="165" height="28" rx="4" fill="#f59e0b"/>
+  <text x="245" y="104" fill="#0f172a" font-family="system-ui, sans-serif" font-size="12" font-weight="700">DEFECT DETECTED: 94%</text>
+
+  <!-- Right HUD Analytics Card -->
+  <rect x="500" y="110" width="200" height="190" rx="8" fill="#0f172a" fill-opacity="0.9" stroke="#334155" stroke-width="1.5"/>
+  <text x="520" y="140" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="1">ROLE WORKFLOW</text>
+  <text x="520" y="165" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="13" font-weight="500">&#10003; Admin / Seller / Buyer</text>
+  <text x="520" y="195" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="13" font-weight="500">&#10003; CNN Visual Inspection</text>
+  <text x="520" y="225" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="13" font-weight="500">&#10003; MySQL Catalog &amp; CRUD</text>
+  <rect x="520" y="250" width="160" height="30" rx="4" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1"/>
+  <text x="540" y="270" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="12" font-weight="600">TensorFlow Pipeline</text>
+</svg>
