@@ -15,7 +15,7 @@ export function About({ profile }: { profile: SiteContent }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5 }}
-        className="mb-8 lg:mb-10 lg:-translate-x-8 xl:-translate-x-14"
+        className="mb-8 lg:mb-10 lg:-translate-x-6 xl:-translate-x-10"
       >
         <span className="font-body text-sm sm:text-base md:text-lg font-bold tracking-wider text-accent uppercase">
           ABOUT ME
@@ -25,14 +25,14 @@ export function About({ profile }: { profile: SiteContent }) {
         </h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-12">
         {/* Left Column: Narrative & Pillars */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col gap-6 lg:col-span-7 xl:col-span-7 lg:-translate-x-8 xl:-translate-x-14"
+          className="flex flex-col gap-6 lg:col-span-7 xl:col-span-7 lg:-translate-x-6 xl:-translate-x-10"
         >
           <p className="font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
             I&apos;m an Integrated M.Tech Computer Science and Engineering student
@@ -93,7 +93,7 @@ export function About({ profile }: { profile: SiteContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="lg:col-span-5 xl:col-span-5"
+          className="lg:col-span-5 xl:col-span-5 lg:translate-x-4 xl:translate-x-8"
         >
           <div className="liquid-glass-interactive relative flex flex-col gap-6 rounded-3xl p-7 sm:p-8 shadow-xl transition-all duration-300">
             {/* Identity & Header */}
