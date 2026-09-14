@@ -10,16 +10,16 @@ export function About({ profile }: { profile: SiteContent }) {
   return (
     <section
       id="about"
-      className="scroll-mt-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-16 md:pt-24 md:pb-24 lg:pt-28 lg:pb-28"
+      className="scroll-mt-20 mx-auto max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] px-6 sm:px-8 lg:px-12 xl:px-16 pt-16 pb-16 md:pt-24 md:pb-24 lg:pt-28 lg:pb-28"
     >
-      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-12">
-        {/* Left Column (aligned with Home left content) */}
+      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-16">
+        {/* Left Column (moved to left corner) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col lg:col-span-7 xl:col-span-7 lg:-translate-x-6 xl:-translate-x-10 max-w-[650px]"
+          className="flex flex-col lg:col-span-7 xl:col-span-7 max-w-[650px] lg:-translate-x-8 xl:-translate-x-14 2xl:-translate-x-20"
         >
           {/* Eyebrow Tag */}
           <div className="flex items-center gap-2">
@@ -100,13 +100,13 @@ export function About({ profile }: { profile: SiteContent }) {
           </div>
         </motion.div>
 
-        {/* Right Column: Polished Academic Background Card (~42% width on desktop) */}
+        {/* Right Column: Polished Academic Background Card (moved to right corner) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, delay: 0.12 }}
-          className="flex justify-center lg:col-span-5 xl:col-span-5 lg:justify-end w-full"
+          className="flex justify-center lg:col-span-5 xl:col-span-5 lg:justify-end w-full lg:translate-x-8 xl:translate-x-14 2xl:translate-x-20"
         >
           <div className="liquid-glass-interactive relative flex flex-col rounded-2xl p-7 sm:p-8 shadow-xl border border-border/80 transition-all duration-300 w-full max-w-[500px]">
             {/* Subtle inner radial glow */}
