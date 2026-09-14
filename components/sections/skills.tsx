@@ -288,30 +288,29 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="scroll-mt-16 mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8"
+      className="scroll-mt-16 mx-auto max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] px-6 sm:px-8 lg:px-12 xl:px-16 py-16 md:py-24"
     >
-      {/* Header — Left Aligned */}
+      {/* Header — Left Aligned with Grid */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5 }}
-        className="lg:-translate-x-6 xl:-translate-x-10"
       >
         <h2 className="font-display text-4xl italic text-foreground md:text-5xl tracking-tight">
           Skills
         </h2>
       </motion.div>
 
-      {/* 4-Column Generously Proportioned Category Pods Grid */}
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 w-full lg:-translate-x-6 xl:-translate-x-10">
+      {/* 4-Column Generously Proportioned Category Pods Grid — Equal Left and Right Margins */}
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 w-full">
         {SKILL_CATEGORIES.map((category: SkillCategory, idx: number) => (
           <motion.div
             key={category.id}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
-            className="liquid-glass-interactive group relative flex flex-col items-center justify-between rounded-2xl sm:rounded-3xl p-6 sm:p-7 overflow-hidden min-h-[330px] sm:min-h-[350px]"
+            className="liquid-glass-interactive group relative flex flex-col items-center justify-between rounded-[1.75rem] sm:rounded-[2rem] p-6 sm:p-7 overflow-hidden min-h-[330px] sm:min-h-[350px]"
           >
             {/* Subtle inner radial glow */}
             <div
@@ -401,8 +400,8 @@ export function Skills() {
 
         /* Glassmorphism Bubble */
         .tech-icon {
-          width: var(--bubble-size, 54px);
-          height: var(--bubble-size, 54px);
+          width: var(--bubble-size, 58px);
+          height: var(--bubble-size, 58px);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -428,14 +427,14 @@ export function Skills() {
         }
 
         .tech-icon img {
-          width: 54%;
-          height: 54%;
+          width: 60%;
+          height: 60%;
         }
 
         .tech-name {
           font-family: var(--font-body), sans-serif;
           color: hsl(var(--foreground));
-          font-size: 11px;
+          font-size: 11.5px;
           font-weight: 600;
           opacity: 0.85;
           text-align: center;
@@ -456,26 +455,26 @@ export function Skills() {
           color: hsl(var(--accent));
         }
 
-        /* Proportional Bubble Sizes */
-        .tech-item.size-xl { --bubble-size: 58px; }
-        .tech-item.size-lg { --bubble-size: 54px; }
-        .tech-item.size-md { --bubble-size: 50px; }
-        .tech-item.size-sm { --bubble-size: 46px; }
+        /* Proportional Enlarged Bubble Sizes */
+        .tech-item.size-xl { --bubble-size: 64px; }
+        .tech-item.size-lg { --bubble-size: 58px; }
+        .tech-item.size-md { --bubble-size: 54px; }
+        .tech-item.size-sm { --bubble-size: 48px; }
 
-        .tech-item.size-xl .tech-name { font-size: 11.5px; font-weight: 600; }
-        .tech-item.size-lg .tech-name { font-size: 11px; font-weight: 500; }
-        .tech-item.size-md .tech-name { font-size: 10.5px; }
-        .tech-item.size-sm .tech-name { font-size: 10px; }
+        .tech-item.size-xl .tech-name { font-size: 12px; font-weight: 600; }
+        .tech-item.size-lg .tech-name { font-size: 11.5px; font-weight: 500; }
+        .tech-item.size-md .tech-name { font-size: 11px; }
+        .tech-item.size-sm .tech-name { font-size: 10.5px; }
 
         @media (max-width: 768px) {
           .tech-cloud {
             gap: 10px 10px;
           }
 
-          .tech-item.size-xl { --bubble-size: 52px; }
-          .tech-item.size-lg { --bubble-size: 48px; }
-          .tech-item.size-md { --bubble-size: 44px; }
-          .tech-item.size-sm { --bubble-size: 40px; }
+          .tech-item.size-xl { --bubble-size: 56px; }
+          .tech-item.size-lg { --bubble-size: 52px; }
+          .tech-item.size-md { --bubble-size: 48px; }
+          .tech-item.size-sm { --bubble-size: 44px; }
 
           .tech-item:nth-child(3n),
           .tech-item:nth-child(4n) {
