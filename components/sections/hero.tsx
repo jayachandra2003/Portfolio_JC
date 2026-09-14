@@ -26,12 +26,12 @@ function ProfilePhoto({ name, className = "" }: { name: string; className?: stri
       className={`relative shrink-0 ${className}`}
     >
       <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-accent/30 via-cyan-500/20 to-teal-400/25 blur-2xl scale-100" />
-      <div className="relative h-60 w-60 overflow-hidden rounded-full ring-2 ring-accent/70 ring-offset-4 ring-offset-background sm:h-72 sm:w-72 md:h-80 md:w-80 lg:h-[340px] lg:w-[340px] xl:h-[365px] xl:w-[365px] shadow-xl shadow-black/30">
+      <div className="relative h-56 w-56 overflow-hidden rounded-full ring-2 ring-accent/70 ring-offset-4 ring-offset-background sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-[320px] lg:w-[320px] xl:h-[345px] xl:w-[345px] shadow-xl shadow-black/30">
         <Image
           src="/images/profile-photo.png"
           alt={name}
           fill
-          sizes="(max-width: 640px) 240px, (max-width: 768px) 288px, (max-width: 1024px) 340px, 365px"
+          sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 345px"
           className="object-cover"
           priority
         />
@@ -56,11 +56,11 @@ export function Hero({ profile }: { profile: SiteContent }) {
   return (
     <section
       id="home"
-      className="mx-auto flex min-h-[calc(100svh-5rem)] max-w-[1560px] flex-col justify-center px-4 py-10 sm:px-6 sm:py-12 lg:pl-0 lg:pr-4 lg:py-0 xl:pl-0 xl:pr-6 2xl:pl-0 2xl:pr-8"
+      className="mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col justify-center px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-0"
     >
-      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16 2xl:gap-20">
+      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-12">
         {/* Left Column: Text Content */}
-        <div className="flex flex-col lg:col-span-7 xl:col-span-7 2xl:col-span-7">
+        <div className="flex flex-col lg:col-span-7 xl:col-span-7 lg:-translate-x-6 xl:-translate-x-10">
           {/* Location Badge */}
           <motion.div
             initial="hidden"
@@ -73,24 +73,24 @@ export function Hero({ profile }: { profile: SiteContent }) {
             <span>{profile.location}</span>
           </motion.div>
 
-          {/* Dominant Name Heading (Kept on one single line on desktop) */}
+          {/* Dominant Name Heading */}
           <motion.h1
             initial="hidden"
             animate="visible"
             custom={0.1}
             variants={fadeUp}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[3.65rem] xl:text-[4.25rem] 2xl:text-[4.85rem] italic leading-[1.08] tracking-tight text-foreground lg:whitespace-nowrap"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-[3.35rem] italic leading-[1.12] tracking-tight text-foreground"
           >
             {profile.name}
           </motion.h1>
 
-          {/* Dynamic Rotating Role with Typewriter & Cursor (Decreased size) */}
+          {/* Dynamic Rotating Role with Typewriter & Cursor */}
           <motion.p
             initial="hidden"
             animate="visible"
             custom={0.2}
             variants={fadeUp}
-            className="mt-3 flex items-center font-body text-xl font-medium text-accent sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] min-h-[2rem] sm:min-h-[2.25rem]"
+            className="mt-2.5 flex items-center font-body text-lg font-medium text-accent sm:text-xl lg:text-[1.45rem] xl:text-[1.6rem] min-h-[1.75rem] sm:min-h-[2rem]"
           >
             <span>{role}</span>
             <span className="ml-1 inline-block h-[1.1em] w-[2px] animate-pulse bg-accent align-middle" />
@@ -102,7 +102,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
             animate="visible"
             custom={0.3}
             variants={fadeUp}
-            className="mt-5 max-w-2xl xl:max-w-3xl font-body text-base leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed"
+            className="mt-5 max-w-2xl font-body text-base leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed"
           >
             {profile.summary}
           </motion.p>
@@ -113,7 +113,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
             animate="visible"
             custom={0.4}
             variants={fadeUp}
-            className="mt-8 flex flex-wrap items-center gap-4"
+            className="mt-7 flex flex-wrap items-center gap-3.5"
           >
             <Link
               href="/#projects"
@@ -121,10 +121,10 @@ export function Hero({ profile }: { profile: SiteContent }) {
                 variant: "primary",
                 size: "lg",
                 className:
-                  "rounded-full font-body font-medium shadow-md shadow-accent/20 transition-all hover:shadow-accent/30 gap-2 px-8 py-3.5 text-sm sm:text-base",
+                  "gap-2 rounded-full font-body font-semibold transition-all px-6 sm:px-7 py-3 text-sm sm:text-[15px] shadow-lg shadow-accent/20 hover:shadow-accent/30",
               })}
             >
-              View Projects <ArrowRight size={16} />
+              View Projects <ArrowRight size={15} />
             </Link>
             <Link
               href="/#contact"
@@ -132,7 +132,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
                 variant: "outline",
                 size: "lg",
                 className:
-                  "rounded-full font-body font-medium transition-all px-8 py-3.5 text-sm sm:text-base bg-card/40 border-border hover:bg-card/70",
+                  "rounded-full font-body font-medium transition-all px-6 sm:px-7 py-3 text-sm sm:text-[15px] bg-card/40 border-border hover:bg-card/70",
               })}
             >
               Contact Me
@@ -140,8 +140,8 @@ export function Hero({ profile }: { profile: SiteContent }) {
           </motion.div>
         </div>
 
-        {/* Right Column: Profile Photo (Moved a bit to the left away from the right screen edge) */}
-        <div className="flex justify-center pt-4 lg:col-span-5 lg:justify-end lg:pr-10 lg:pt-0 xl:col-span-5 xl:pr-16 2xl:col-span-5 2xl:pr-24">
+        {/* Right Column: Profile Photo */}
+        <div className="flex justify-center pt-4 lg:col-span-5 lg:justify-end lg:pt-0">
           <ProfilePhoto name={profile.name} />
         </div>
       </div>
