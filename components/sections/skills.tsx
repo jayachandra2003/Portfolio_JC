@@ -311,7 +311,7 @@ export function Skills() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
-            className="liquid-glass-interactive group relative flex flex-col items-center justify-between rounded-[2.5rem] p-6 sm:p-7 md:p-8 overflow-hidden min-h-[340px] sm:min-h-[360px]"
+            className="liquid-glass-interactive group relative flex flex-col items-center justify-between rounded-2xl sm:rounded-3xl p-6 sm:p-7 overflow-hidden min-h-[330px] sm:min-h-[350px]"
           >
             {/* Subtle inner radial glow */}
             <div
@@ -338,7 +338,7 @@ export function Skills() {
         ))}
       </div>
 
-      {/* Scoped CSS for Bubble Cloud with enlarged dimensions */}
+      {/* Scoped CSS for Bubble Cloud matching reference box proportions */}
       <style jsx global>{`
         /* Tech Cloud Flex Wrap in Pods */
         .tech-cloud {
@@ -401,8 +401,8 @@ export function Skills() {
 
         /* Glassmorphism Bubble */
         .tech-icon {
-          width: var(--bubble-size, 60px);
-          height: var(--bubble-size, 60px);
+          width: var(--bubble-size, 54px);
+          height: var(--bubble-size, 54px);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -435,7 +435,7 @@ export function Skills() {
         .tech-name {
           font-family: var(--font-body), sans-serif;
           color: hsl(var(--foreground));
-          font-size: 11.5px;
+          font-size: 11px;
           font-weight: 600;
           opacity: 0.85;
           text-align: center;
@@ -456,24 +456,26 @@ export function Skills() {
           color: hsl(var(--accent));
         }
 
-        /* Enlarged Bubble Sizes */
-        .tech-item.size-xl { --bubble-size: 78px; }
-        .tech-item.size-lg { --bubble-size: 68px; }
-        .tech-item.size-md { --bubble-size: 58px; }
-        .tech-item.size-sm { --bubble-size: 48px; }
+        /* Proportional Bubble Sizes */
+        .tech-item.size-xl { --bubble-size: 58px; }
+        .tech-item.size-lg { --bubble-size: 54px; }
+        .tech-item.size-md { --bubble-size: 50px; }
+        .tech-item.size-sm { --bubble-size: 46px; }
 
-        .tech-item.size-xl .tech-name { font-size: 12px; font-weight: 600; }
-        .tech-item.size-sm .tech-name { font-size: 10.5px; }
+        .tech-item.size-xl .tech-name { font-size: 11.5px; font-weight: 600; }
+        .tech-item.size-lg .tech-name { font-size: 11px; font-weight: 500; }
+        .tech-item.size-md .tech-name { font-size: 10.5px; }
+        .tech-item.size-sm .tech-name { font-size: 10px; }
 
         @media (max-width: 768px) {
           .tech-cloud {
             gap: 10px 10px;
           }
 
-          .tech-item.size-xl { --bubble-size: 66px; }
-          .tech-item.size-lg { --bubble-size: 58px; }
-          .tech-item.size-md { --bubble-size: 50px; }
-          .tech-item.size-sm { --bubble-size: 42px; }
+          .tech-item.size-xl { --bubble-size: 52px; }
+          .tech-item.size-lg { --bubble-size: 48px; }
+          .tech-item.size-md { --bubble-size: 44px; }
+          .tech-item.size-sm { --bubble-size: 40px; }
 
           .tech-item:nth-child(3n),
           .tech-item:nth-child(4n) {
