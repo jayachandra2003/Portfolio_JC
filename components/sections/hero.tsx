@@ -56,11 +56,11 @@ export function Hero({ profile }: { profile: SiteContent }) {
   return (
     <section
       id="home"
-      className="mx-auto flex min-h-[calc(100svh-5rem)] max-w-[1560px] flex-col justify-center px-4 py-10 sm:px-6 sm:py-12 lg:pl-0 lg:pr-4 lg:py-0 xl:pl-0 xl:pr-6 2xl:pl-0 2xl:pr-8"
+      className="mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col justify-center px-6 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-0"
     >
-      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16 2xl:gap-20">
+      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
         {/* Left Column: Text Content */}
-        <div className="flex flex-col lg:col-span-7 xl:col-span-7 2xl:col-span-7">
+        <div className="flex flex-col lg:col-span-7">
           {/* Location Badge */}
           <motion.div
             initial="hidden"
@@ -73,13 +73,13 @@ export function Hero({ profile }: { profile: SiteContent }) {
             <span>{profile.location}</span>
           </motion.div>
 
-          {/* Dominant Name Heading (Kept on one single line on desktop) */}
+          {/* Dominant Name Heading */}
           <motion.h1
             initial="hidden"
             animate="visible"
             custom={0.1}
             variants={fadeUp}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[3.65rem] xl:text-[4.25rem] 2xl:text-[4.85rem] italic leading-[1.08] tracking-tight text-foreground lg:whitespace-nowrap"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[3.25rem] xl:text-[3.85rem] italic leading-[1.1] tracking-tight text-foreground"
           >
             {profile.name}
           </motion.h1>
@@ -102,7 +102,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
             animate="visible"
             custom={0.3}
             variants={fadeUp}
-            className="mt-5 max-w-2xl xl:max-w-3xl font-body text-base leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed"
+            className="mt-5 max-w-2xl font-body text-base leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed"
           >
             {profile.summary}
           </motion.p>
@@ -121,7 +121,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
                 variant: "primary",
                 size: "lg",
                 className:
-                  "rounded-full font-body font-medium shadow-md shadow-accent/20 transition-all hover:shadow-accent/30 gap-2 px-8 py-3.5 text-sm sm:text-base",
+                  "gap-2 rounded-full font-body font-semibold transition-all px-8 py-3.5 text-sm sm:text-base shadow-lg shadow-accent/20 hover:shadow-accent/30",
               })}
             >
               View Projects <ArrowRight size={16} />
@@ -140,8 +140,8 @@ export function Hero({ profile }: { profile: SiteContent }) {
           </motion.div>
         </div>
 
-        {/* Right Column: Profile Photo (Moved a bit to the left away from the right screen edge) */}
-        <div className="flex justify-center pt-4 lg:col-span-5 lg:justify-end lg:pr-10 lg:pt-0 xl:col-span-5 xl:pr-16 2xl:col-span-5 2xl:pr-24">
+        {/* Right Column: Profile Photo */}
+        <div className="flex justify-center pt-4 lg:col-span-5 lg:justify-end lg:pt-0">
           <ProfilePhoto name={profile.name} />
         </div>
       </div>

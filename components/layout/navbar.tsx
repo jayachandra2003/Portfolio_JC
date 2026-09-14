@@ -49,7 +49,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full liquid-glass border-b border-white/10 transition-colors duration-300">
-      <nav className="mx-auto flex h-20 max-w-[1560px] items-center justify-between px-6 sm:px-8 lg:px-8 xl:px-10">
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-10">
         <Link href="/#home" className="font-display text-2xl sm:text-[1.65rem] italic text-foreground transition-colors hover:text-accent">
           Jaya Chandra
         </Link>

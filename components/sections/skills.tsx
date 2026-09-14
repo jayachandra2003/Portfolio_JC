@@ -288,7 +288,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="scroll-mt-16 mx-auto max-w-[1560px] px-6 sm:px-8 lg:px-10 py-16 md:py-24"
+      className="scroll-mt-16 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-16 md:py-24"
     >
       {/* Header — Left Aligned */}
       <motion.div
@@ -303,7 +303,7 @@ export function Skills() {
       </motion.div>
 
       {/* 4-Column Generously Proportioned Category Pods Grid */}
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 max-w-[1500px] mx-auto">
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 w-full">
         {SKILL_CATEGORIES.map((category: SkillCategory, idx: number) => (
           <motion.div
             key={category.id}

@@ -8,7 +8,7 @@ export function About({ profile }: { profile: SiteContent }) {
   const { education } = profile;
 
   return (
-    <section id="about" className="scroll-mt-20 mx-auto max-w-[1560px] px-6 sm:px-8 lg:px-8 xl:px-10 pt-16 pb-8 md:pt-24 md:pb-12">
+    <section id="about" className="scroll-mt-20 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 pt-16 pb-8 md:pt-24 md:pb-12">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -25,7 +25,7 @@ export function About({ profile }: { profile: SiteContent }) {
         </h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16 xl:gap-20">
+      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
         {/* Left Column: Narrative & Pillars */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
