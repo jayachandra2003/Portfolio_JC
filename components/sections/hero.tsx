@@ -25,13 +25,13 @@ function ProfilePhoto({ name, className = "" }: { name: string; className?: stri
       transition={{ duration: 0.7, ease: "easeOut" }}
       className={`relative shrink-0 ${className}`}
     >
-      <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-accent/30 via-cyan-500/20 to-teal-400/25 blur-2xl scale-100" />
-      <div className="relative h-60 w-60 overflow-hidden rounded-full ring-2 ring-accent/70 ring-offset-4 ring-offset-background sm:h-72 sm:w-72 md:h-80 md:w-80 lg:h-[340px] lg:w-[340px] xl:h-[365px] xl:w-[365px] shadow-xl shadow-black/30">
+      <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-accent/30 via-cyan-500/20 to-teal-400/25 blur-2xl scale-95" />
+      <div className="relative h-48 w-48 overflow-hidden rounded-full ring-2 ring-accent/70 ring-offset-4 ring-offset-background sm:h-56 sm:w-56 md:h-64 md:w-64 lg:h-[270px] lg:w-[270px] xl:h-[295px] xl:w-[295px] shadow-xl shadow-black/30">
         <Image
           src="/images/profile-photo.png"
           alt={name}
           fill
-          sizes="(max-width: 640px) 240px, (max-width: 768px) 288px, (max-width: 1024px) 340px, 365px"
+          sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 270px, 295px"
           className="object-cover"
           priority
         />
@@ -56,11 +56,11 @@ export function Hero({ profile }: { profile: SiteContent }) {
   return (
     <section
       id="home"
-      className="mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col justify-center px-6 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-0"
+      className="mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col justify-center px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-0"
     >
-      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-12">
         {/* Left Column: Text Content */}
-        <div className="flex flex-col lg:col-span-7">
+        <div className="flex flex-col lg:col-span-7 xl:col-span-7">
           {/* Location Badge */}
           <motion.div
             initial="hidden"
