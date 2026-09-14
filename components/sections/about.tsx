@@ -19,7 +19,7 @@ export function About({ profile }: { profile: SiteContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col lg:col-span-7"
+          className="flex flex-col lg:col-span-7 lg:-translate-x-6 xl:-translate-x-10"
         >
           {/* Eyebrow Tag */}
           <div className="flex items-center gap-2">
@@ -106,7 +106,7 @@ export function About({ profile }: { profile: SiteContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, delay: 0.12 }}
-          className="lg:col-span-5 w-full max-w-[480px] lg:max-w-none"
+          className="lg:col-span-5 w-full max-w-[480px] lg:max-w-none lg:translate-x-6 xl:translate-x-10"
         >
           <div className="liquid-glass-interactive relative flex flex-col rounded-3xl p-6 sm:p-7 shadow-xl border border-border/80 transition-all duration-300">
             {/* Subtle inner radial glow */}
