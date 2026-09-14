@@ -23,7 +23,7 @@ export function About({ profile }: { profile: SiteContent }) {
         >
           {/* Eyebrow Tag */}
           <div className="flex items-center gap-2">
-            <span className="font-mono text-xs sm:text-sm font-bold tracking-[2px] text-accent uppercase">
+            <span className="font-mono text-sm sm:text-base font-bold tracking-[2.5px] text-accent uppercase">
               ABOUT ME
             </span>
           </div>
