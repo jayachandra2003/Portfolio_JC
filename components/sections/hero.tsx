@@ -25,13 +25,13 @@ function ProfilePhoto({ name, className = "" }: { name: string; className?: stri
       transition={{ duration: 0.7, ease: "easeOut" }}
       className={`relative shrink-0 ${className}`}
     >
-      <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-accent/30 via-cyan-500/20 to-teal-400/25 blur-2xl scale-95" />
-      <div className="relative h-48 w-48 overflow-hidden rounded-full ring-2 ring-accent/70 ring-offset-4 ring-offset-background sm:h-56 sm:w-56 md:h-64 md:w-64 lg:h-[270px] lg:w-[270px] xl:h-[295px] xl:w-[295px] shadow-xl shadow-black/30">
+      <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-accent/30 via-cyan-500/20 to-teal-400/25 blur-2xl scale-100" />
+      <div className="relative h-56 w-56 overflow-hidden rounded-full ring-2 ring-accent/70 ring-offset-4 ring-offset-background sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-[320px] lg:w-[320px] xl:h-[345px] xl:w-[345px] shadow-xl shadow-black/30">
         <Image
           src="/images/profile-photo.png"
           alt={name}
           fill
-          sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 270px, 295px"
+          sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 345px"
           className="object-cover"
           priority
         />
@@ -79,18 +79,18 @@ export function Hero({ profile }: { profile: SiteContent }) {
             animate="visible"
             custom={0.1}
             variants={fadeUp}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[3.25rem] xl:text-[3.85rem] italic leading-[1.1] tracking-tight text-foreground"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-[3.35rem] italic leading-[1.12] tracking-tight text-foreground"
           >
             {profile.name}
           </motion.h1>
 
-          {/* Dynamic Rotating Role with Typewriter & Cursor (Decreased size) */}
+          {/* Dynamic Rotating Role with Typewriter & Cursor */}
           <motion.p
             initial="hidden"
             animate="visible"
             custom={0.2}
             variants={fadeUp}
-            className="mt-3 flex items-center font-body text-xl font-medium text-accent sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] min-h-[2rem] sm:min-h-[2.25rem]"
+            className="mt-2.5 flex items-center font-body text-lg font-medium text-accent sm:text-xl lg:text-[1.45rem] xl:text-[1.6rem] min-h-[1.75rem] sm:min-h-[2rem]"
           >
             <span>{role}</span>
             <span className="ml-1 inline-block h-[1.1em] w-[2px] animate-pulse bg-accent align-middle" />
@@ -102,7 +102,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
             animate="visible"
             custom={0.3}
             variants={fadeUp}
-            className="mt-5 max-w-2xl font-body text-base leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed"
+            className="mt-4 max-w-xl font-body text-sm leading-relaxed text-muted-foreground sm:text-base sm:leading-relaxed"
           >
             {profile.summary}
           </motion.p>
@@ -113,7 +113,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
             animate="visible"
             custom={0.4}
             variants={fadeUp}
-            className="mt-8 flex flex-wrap items-center gap-4"
+            className="mt-7 flex flex-wrap items-center gap-3.5"
           >
             <Link
               href="/#projects"
@@ -121,10 +121,10 @@ export function Hero({ profile }: { profile: SiteContent }) {
                 variant: "primary",
                 size: "lg",
                 className:
-                  "gap-2 rounded-full font-body font-semibold transition-all px-8 py-3.5 text-sm sm:text-base shadow-lg shadow-accent/20 hover:shadow-accent/30",
+                  "gap-2 rounded-full font-body font-semibold transition-all px-6 sm:px-7 py-3 text-sm sm:text-[15px] shadow-lg shadow-accent/20 hover:shadow-accent/30",
               })}
             >
-              View Projects <ArrowRight size={16} />
+              View Projects <ArrowRight size={15} />
             </Link>
             <Link
               href="/#contact"
@@ -132,7 +132,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
                 variant: "outline",
                 size: "lg",
                 className:
-                  "rounded-full font-body font-medium transition-all px-8 py-3.5 text-sm sm:text-base bg-card/40 border-border hover:bg-card/70",
+                  "rounded-full font-body font-medium transition-all px-6 sm:px-7 py-3 text-sm sm:text-[15px] bg-card/40 border-border hover:bg-card/70",
               })}
             >
               Contact Me
