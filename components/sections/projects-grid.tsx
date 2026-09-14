@@ -251,7 +251,7 @@ function getProjectConfig(project: Project): ProjectSpotlightConfig {
   };
 }
 
-const INITIAL_LIMIT = 4;
+const INITIAL_LIMIT = 3;
 
 export function ProjectsGrid({ projects }: { projects: Project[] }) {
   const [showAll, setShowAll] = useState(false);
@@ -375,8 +375,8 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={buttonVariants({
-                          variant: "ghost",
-                          className: "gap-1.5 px-3 py-2.5 font-body text-sm text-muted-foreground hover:text-foreground",
+                          variant: "outline",
+                          className: "gap-2 px-4 py-2.5 font-body text-sm font-medium hover:border-accent/40",
                         })}
                       >
                         <ExternalLink size={15} /> Live Demo

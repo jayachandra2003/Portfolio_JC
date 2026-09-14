@@ -92,7 +92,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
             variants={fadeUp}
             className="mt-2.5 flex items-center font-body text-lg font-medium text-accent sm:text-xl lg:text-[1.45rem] xl:text-[1.6rem] min-h-[1.75rem] sm:min-h-[2rem]"
           >
-            <span>{role}</span>
+            <span>{role || "\u00a0"}</span>
             <span className="ml-1 inline-block h-[1.1em] w-[2px] animate-pulse bg-accent align-middle" />
           </motion.p>
 
