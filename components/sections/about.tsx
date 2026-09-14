@@ -10,38 +10,38 @@ export function About({ profile }: { profile: SiteContent }) {
   return (
     <section
       id="about"
-      className="scroll-mt-20 mx-auto max-w-[1240px] px-6 sm:px-8 lg:px-10 pt-24 pb-20 md:pt-28 md:pb-24 lg:pt-32 lg:pb-28"
+      className="scroll-mt-20 mx-auto max-w-[1200px] px-6 sm:px-8 lg:px-10 pt-[100px] lg:pt-[120px] pb-[80px] lg:pb-[100px]"
     >
-      <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-        {/* Left Column (58-60% width on desktop) */}
+      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-[56px]">
+        {/* Left Column (~58% width on desktop) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col lg:col-span-7 lg:-translate-x-6 xl:-translate-x-10"
+          className="flex flex-col lg:col-span-7 max-w-[650px]"
         >
           {/* Eyebrow Tag */}
           <div className="flex items-center gap-2">
-            <span className="font-mono text-xs sm:text-sm font-bold tracking-widest text-accent uppercase">
+            <span className="font-mono text-xs sm:text-sm font-bold tracking-[2px] text-accent uppercase">
               ABOUT ME
             </span>
           </div>
 
           {/* Headline */}
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-[2.65rem] xl:text-[2.85rem] italic leading-[1.1] tracking-tight text-foreground">
+          <h2 className="mt-4 sm:mt-5 font-display text-4xl sm:text-5xl lg:text-[54px] italic leading-[1.1] tracking-tight text-foreground">
             Building software and intelligent systems.
           </h2>
 
           {/* Narrative Paragraphs */}
-          <div className="mt-6 space-y-4 font-body max-w-xl xl:max-w-[560px]">
-            <p className="text-base sm:text-[17px] leading-[1.65] text-muted-foreground">
+          <div className="mt-6 space-y-4 font-body">
+            <p className="text-base sm:text-[17px] leading-[1.7] text-muted-foreground">
               I&apos;m an Integrated M.Tech Computer Science and Engineering student
               at VIT-AP University, focused on software development and AI/ML.
               I enjoy building practical applications that combine strong software
               engineering with intelligent systems.
             </p>
-            <p className="text-sm sm:text-[15px] leading-[1.65] text-muted-foreground/85">
+            <p className="text-sm sm:text-[15px] leading-[1.7] text-muted-foreground/90">
               My projects include full-stack web applications, machine-learning
               systems, and scalable web solutions using technologies such as
               Python, Flask, TensorFlow, React, Next.js, and modern databases.
@@ -49,50 +49,50 @@ export function About({ profile }: { profile: SiteContent }) {
           </div>
 
           {/* Horizontal Divider */}
-          <div className="my-7 h-px w-full max-w-xl xl:max-w-[560px] bg-border/60" />
+          <div className="my-7 sm:my-8 h-px w-full bg-border/60" />
 
           {/* 3 Key Engineering Pillars */}
-          <div className="flex flex-col gap-5 max-w-xl xl:max-w-[560px]">
+          <div className="flex flex-col gap-6">
             {/* Pillar 1 */}
-            <div className="flex items-start gap-3.5 sm:gap-4">
-              <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 text-accent shadow-sm">
-                <Code2 size={18} />
+            <div className="flex items-start gap-4">
+              <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10 border border-accent/20 text-accent shadow-sm">
+                <Code2 size={20} />
               </div>
               <div>
-                <h4 className="font-body text-[15px] sm:text-base font-semibold text-foreground">
+                <h4 className="font-body text-base sm:text-[18px] font-semibold text-foreground">
                   Full-Stack Development
                 </h4>
-                <p className="mt-0.5 font-body text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-1 font-body text-xs sm:text-[14px] leading-relaxed text-muted-foreground">
                   Building responsive, performant web applications and robust API architectures.
                 </p>
               </div>
             </div>
 
             {/* Pillar 2 */}
-            <div className="flex items-start gap-3.5 sm:gap-4">
-              <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 text-accent shadow-sm">
-                <Brain size={18} />
+            <div className="flex items-start gap-4">
+              <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10 border border-accent/20 text-accent shadow-sm">
+                <Brain size={20} />
               </div>
               <div>
-                <h4 className="font-body text-[15px] sm:text-base font-semibold text-foreground">
+                <h4 className="font-body text-base sm:text-[18px] font-semibold text-foreground">
                   AI & Machine Learning
                 </h4>
-                <p className="mt-0.5 font-body text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-1 font-body text-xs sm:text-[14px] leading-relaxed text-muted-foreground">
                   Designing data pipelines, neural models, and integrating AI into practical software.
                 </p>
               </div>
             </div>
 
             {/* Pillar 3 */}
-            <div className="flex items-start gap-3.5 sm:gap-4">
-              <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 text-accent shadow-sm">
-                <Layers size={18} />
+            <div className="flex items-start gap-4">
+              <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10 border border-accent/20 text-accent shadow-sm">
+                <Layers size={20} />
               </div>
               <div>
-                <h4 className="font-body text-[15px] sm:text-base font-semibold text-foreground">
+                <h4 className="font-body text-base sm:text-[18px] font-semibold text-foreground">
                   Systems & Architecture
                 </h4>
-                <p className="mt-0.5 font-body text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-1 font-body text-xs sm:text-[14px] leading-relaxed text-muted-foreground">
                   Focused on clean code, database optimization, and scalable modular designs.
                 </p>
               </div>
@@ -100,18 +100,18 @@ export function About({ profile }: { profile: SiteContent }) {
           </div>
         </motion.div>
 
-        {/* Right Column: Polished Academic Background Card (40-42% width) */}
+        {/* Right Column: Polished Academic Background Card (~42% width on desktop) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, delay: 0.12 }}
-          className="lg:col-span-5 w-full max-w-[480px] lg:max-w-none lg:translate-x-6 xl:translate-x-10"
+          className="lg:col-span-5 w-full max-w-[500px]"
         >
-          <div className="liquid-glass-interactive relative flex flex-col rounded-3xl p-6 sm:p-7 shadow-xl border border-border/80 transition-all duration-300">
+          <div className="liquid-glass-interactive relative flex flex-col rounded-2xl p-7 sm:p-8 shadow-xl border border-border/80 transition-all duration-300">
             {/* Subtle inner radial glow */}
             <div
-              className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-300 group-hover:opacity-100 rounded-3xl"
+              className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-300 group-hover:opacity-100 rounded-2xl"
               style={{
                 background:
                   "radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.12) 0%, transparent 60%)",
@@ -127,8 +127,8 @@ export function About({ profile }: { profile: SiteContent }) {
             </div>
 
             {/* Name & Degree */}
-            <div className="relative z-10 mt-4 space-y-0.5">
-              <h3 className="font-display text-2xl sm:text-[1.65rem] italic text-foreground tracking-tight">
+            <div className="relative z-10 mt-4 space-y-1">
+              <h3 className="font-display text-2xl sm:text-[28px] italic text-foreground tracking-tight">
                 {profile.name}
               </h3>
               <p className="font-body text-xs sm:text-sm text-muted-foreground leading-snug">
@@ -140,7 +140,7 @@ export function About({ profile }: { profile: SiteContent }) {
             <div className="relative z-10 my-4 h-px w-full bg-border/60" />
 
             {/* Academic Information 2x2 Grid */}
-            <div className="relative z-10 grid grid-cols-2 gap-x-4 gap-y-4">
+            <div className="relative z-10 grid grid-cols-2 gap-x-4 gap-y-4 sm:gap-x-6">
               {/* Institution */}
               <div>
                 <span className="font-mono text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
@@ -201,16 +201,16 @@ export function About({ profile }: { profile: SiteContent }) {
                 FOCUS AREAS
               </span>
               <div className="mt-2.5 flex flex-wrap gap-2">
-                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-3 py-1 font-body text-xs font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
+                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-3.5 py-1 font-body text-xs font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
                   Software Development
                 </span>
-                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-3 py-1 font-body text-xs font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
+                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-3.5 py-1 font-body text-xs font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
                   AI & Machine Learning
                 </span>
-                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-3 py-1 font-body text-xs font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
+                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-3.5 py-1 font-body text-xs font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
                   Full-Stack Web
                 </span>
-                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-3 py-1 font-body text-xs font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
+                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-3.5 py-1 font-body text-xs font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
                   Computer Vision
                 </span>
               </div>
