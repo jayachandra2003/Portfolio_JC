@@ -43,17 +43,27 @@ export default async function HomePage() {
 
       <Skills />
 
-      <section id="projects" className="scroll-mt-16 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-16 md:py-20">
-        <h2 className="mb-10 font-display text-4xl italic text-foreground md:text-5xl">
-          Projects
-        </h2>
+      <section id="projects" className="scroll-mt-16 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-16 md:py-24">
+        <div className="mb-10 lg:mb-12">
+          <span className="font-body text-xs sm:text-sm font-bold tracking-widest text-accent uppercase">
+            FEATURED WORK
+          </span>
+          <h2 className="mt-2 font-display text-4xl italic text-foreground md:text-5xl tracking-tight">
+            Projects & Case Studies
+          </h2>
+        </div>
         <ProjectsGrid projects={projects} />
       </section>
 
-      <section id="certifications" className="scroll-mt-16 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-16 md:py-20">
-        <h2 className="mb-10 font-display text-4xl italic text-foreground md:text-5xl">
-          Certifications
-        </h2>
+      <section id="certifications" className="scroll-mt-16 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-16 md:py-24">
+        <div className="mb-10 lg:mb-12">
+          <span className="font-body text-xs sm:text-sm font-bold tracking-widest text-accent uppercase">
+            CREDENTIALS
+          </span>
+          <h2 className="mt-2 font-display text-4xl italic text-foreground md:text-5xl tracking-tight">
+            Certifications & Honors
+          </h2>
+        </div>
         <CertificationsGrid certifications={certifications} />
       </section>
 
