@@ -93,7 +93,7 @@ export function About({ profile }: { profile: SiteContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="lg:col-span-5 xl:col-span-5 lg:translate-x-8 xl:translate-x-12 lg:-translate-y-4 xl:-translate-y-6"
+          className="lg:col-span-5 xl:col-span-5 lg:translate-x-14 xl:translate-x-20 lg:-translate-y-4 xl:-translate-y-6"
         >
           <div className="liquid-glass-interactive relative flex flex-col gap-6 rounded-3xl p-7 sm:p-8 shadow-xl transition-all duration-300">
             {/* Identity & Header */}
