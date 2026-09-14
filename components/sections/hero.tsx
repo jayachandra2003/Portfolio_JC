@@ -60,7 +60,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
     >
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-12">
         {/* Left Column: Text Content */}
-        <div className="flex flex-col lg:col-span-7 xl:col-span-7">
+        <div className="flex flex-col lg:col-span-7 xl:col-span-7 lg:-translate-x-6 xl:-translate-x-10">
           {/* Location Badge */}
           <motion.div
             initial="hidden"
