@@ -15,7 +15,18 @@ export async function getProjects(): Promise<Project[]> {
     if (snapshot.empty) {
       return PROJECT_SEED_DATA;
     }
-    return snapshot.docs.map((doc) => doc.data() as Project);
+    const firestoreProjects = snapshot.docs.map((doc) => doc.data() as Project);
+    // Include any new projects from PROJECT_SEED_DATA that aren't yet in Firestore
+    const existingIds = new Set(firestoreProjects.map((p) => p.id || p.slug));
+    const missingSeedProjects = PROJECT_SEED_DATA.filter(
+      (p) => !existingIds.has(p.id) && !existingIds.has(p.slug)
+    );
+    const merged = [...firestoreProjects, ...missingSeedProjects];
+    // Always use seed data order as source of truth
+    const seedOrderMap = new Map(PROJECT_SEED_DATA.map((p) => [p.slug, p.order]));
+    return merged.sort(
+      (a, b) => (seedOrderMap.get(a.slug) ?? a.order ?? 0) - (seedOrderMap.get(b.slug) ?? b.order ?? 0)
+    );
   } catch {
     return PROJECT_SEED_DATA;
   }
@@ -73,7 +84,7 @@ export const PROJECT_SEED_DATA: Project[] = [
     repoUrl: null,
     demoUrl: null,
     featured: false,
-    order: 2,
+    order: 4,
   },
   {
     id: "bullymail-threat-intelligence",
@@ -133,6 +144,25 @@ export const PROJECT_SEED_DATA: Project[] = [
     repoUrl: "https://github.com/jayachandra2003/CyberSentinel-AI",
     demoUrl: null,
     featured: false,
-    order: 4,
+    order: 5,
+  },
+  {
+    id: "cocanvas",
+    slug: "cocanvas",
+    title: "CoCanvas",
+    description:
+      "A real-time collaborative multiplayer whiteboard and team workspace featuring multi-page & infinite canvas modes, Socket.io event synchronization, voice typing, and role management.",
+    tech: ["Node.js", "Socket.io", "JavaScript", "HTML5 Canvas", "WebRTC", "Express", "CSS3"],
+    features: [
+      "Fixed multi-page & infinite canvas modes",
+      "Sub-30ms low-latency WebSocket drawing sync",
+      "Host presentation mode vs. friendly collaboration mode",
+      "9 realistic MS Paint brush engines & shape tools",
+      "Multi-language continuous voice typing & ChatSpace",
+    ],
+    repoUrl: "https://github.com/jayachandra2003/CoCanvas",
+    demoUrl: "https://cocanvas-7gef.onrender.com",
+    featured: false,
+    order: 2,
   },
 ];

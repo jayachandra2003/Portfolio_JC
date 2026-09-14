@@ -32,8 +32,8 @@ export function ResumeSection({ profile }: ResumeSectionProps) {
   }, [isPreviewOpen]);
 
   return (
-    <section id="resume" className="scroll-mt-16 mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
-      <h2 className="mb-10 font-display text-4xl italic text-foreground md:text-5xl lg:-translate-x-6 xl:-translate-x-10">
+    <section id="resume" className="scroll-mt-16 mx-auto max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] px-6 sm:px-8 lg:px-12 xl:px-16 py-16 md:py-20">
+      <h2 className="mb-10 text-center font-display text-4xl italic text-foreground md:text-5xl">
         Resume
       </h2>
 
