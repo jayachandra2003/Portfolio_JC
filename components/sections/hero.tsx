@@ -102,7 +102,7 @@ export function Hero({ profile }: { profile: SiteContent }) {
             animate="visible"
             custom={0.3}
             variants={fadeUp}
-            className="mt-4 max-w-xl font-body text-sm leading-relaxed text-muted-foreground sm:text-base sm:leading-relaxed"
+            className="mt-5 max-w-2xl font-body text-base leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed"
           >
             {profile.summary}
           </motion.p>
