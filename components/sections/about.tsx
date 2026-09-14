@@ -8,14 +8,14 @@ export function About({ profile }: { profile: SiteContent }) {
   const { education } = profile;
 
   return (
-    <section id="about" className="scroll-mt-20 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 pt-16 pb-8 md:pt-24 md:pb-12">
+    <section id="about" className="scroll-mt-20 mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6 md:pt-24 md:pb-12 lg:px-8">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5 }}
-        className="mb-12 lg:mb-16"
+        className="mb-12 lg:mb-16 lg:-translate-x-6 xl:-translate-x-10"
       >
         <span className="font-body text-sm sm:text-base md:text-lg font-bold tracking-wider text-accent uppercase">
           ABOUT ME
@@ -32,7 +32,7 @@ export function About({ profile }: { profile: SiteContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col gap-6 lg:col-span-7 xl:col-span-7"
+          className="flex flex-col gap-6 lg:col-span-7 xl:col-span-7 lg:-translate-x-6 xl:-translate-x-10"
         >
           <p className="font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
             I&apos;m an Integrated M.Tech Computer Science and Engineering student
