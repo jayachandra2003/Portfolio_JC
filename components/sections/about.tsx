@@ -25,7 +25,7 @@ export function About({ profile }: { profile: SiteContent }) {
         </h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
+      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
         {/* Left Column: Narrative & Pillars */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -93,7 +93,7 @@ export function About({ profile }: { profile: SiteContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="lg:col-span-5 xl:col-span-5 lg:-mt-8 xl:-mt-10"
+          className="lg:col-span-5 xl:col-span-5"
         >
           <div className="liquid-glass-interactive relative flex flex-col gap-6 rounded-3xl p-7 sm:p-8 shadow-xl transition-all duration-300">
             {/* Identity & Header */}
