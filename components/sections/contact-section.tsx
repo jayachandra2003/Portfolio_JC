@@ -19,15 +19,12 @@ export function ContactSection() {
     <section id="contact" className="scroll-mt-16 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-16 md:py-24">
       <div className="mx-auto max-w-3xl">
         {/* Section Header */}
-        <div className="text-center mb-10 lg:mb-12">
-          <span className="font-body text-xs sm:text-sm font-bold tracking-widest text-accent uppercase">
-            GET IN TOUCH
-          </span>
-          <h2 className="mt-2 font-display text-4xl italic text-foreground md:text-5xl tracking-tight">
-            Contact & Connect
+        <div className="text-center">
+          <h2 className="font-display text-4xl italic text-foreground md:text-5xl">
+            Contact
           </h2>
           <p className="mx-auto mt-3 max-w-xl font-body text-sm text-muted-foreground md:text-base">
-            Have an open role, an interesting project, or want to collaborate on software engineering and AI systems? Send a message or reach out directly.
+            Have a role, a project, or just want to talk about AI/ML and full-stack development? Send a message, or reach out directly below.
           </p>
         </div>
 

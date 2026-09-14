@@ -32,15 +32,10 @@ export function ResumeSection({ profile }: ResumeSectionProps) {
   }, [isPreviewOpen]);
 
   return (
-    <section id="resume" className="scroll-mt-16 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-16 md:py-24">
-      <div className="mb-10 lg:mb-12">
-        <span className="font-body text-xs sm:text-sm font-bold tracking-widest text-accent uppercase">
-          CURRICULUM VITAE
-        </span>
-        <h2 className="mt-2 font-display text-4xl italic text-foreground md:text-5xl tracking-tight">
-          Resume
-        </h2>
-      </div>
+    <section id="resume" className="scroll-mt-16 mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-16 md:py-20">
+      <h2 className="mb-10 font-display text-4xl italic text-foreground md:text-5xl">
+        Resume
+      </h2>
 
       <div className="mx-auto max-w-2xl">
         <motion.div
