@@ -86,6 +86,8 @@ h1, h2, h3, h4 {
     0 12px 36px -10px hsl(0 0% 0% / 0.45),
     inset 0 1px 1px 0 hsl(0 0% 100% / 0.16),
     inset 0 0 20px 0 hsl(var(--accent) / 0.03);
+  transform: translateZ(0);
+  isolation: isolate;
 }
 
 .liquid-glass-interactive {
@@ -101,7 +103,12 @@ h1, h2, h3, h4 {
     0 10px 30px -8px hsl(0 0% 0% / 0.4),
     inset 0 1px 1px 0 hsl(0 0% 100% / 0.18),
     inset 0 0 16px 0 hsl(var(--accent) / 0.03);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+  isolation: isolate;
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: box-shadow, border-color;
 }
 
 .liquid-glass-interactive:hover {
@@ -141,7 +148,10 @@ h1, h2, h3, h4 {
   box-shadow:
     0 10px 28px -8px hsl(220 20% 50% / 0.14),
     inset 0 1px 1px 0 hsl(0 0% 100% / 0.9);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: box-shadow, border-color;
 }
 
 .light .liquid-glass-interactive:hover {

@@ -21,7 +21,7 @@ interface ActiveModalCert {
   name: string;
 }
 
-const INITIAL_LIMIT = 6;
+const INITIAL_LIMIT = 4;
 
 export function CertificationsGrid({
   certifications,
@@ -55,7 +55,7 @@ export function CertificationsGrid({
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {visibleCertifications.map((cert, i) => {
           const displayDate = formatDate(cert.date);
           const tags = cert.tags ?? [];

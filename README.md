@@ -1,48 +1,47 @@
-# Jaya Chandra — Portfolio
+# Vennam Jaya Chandra — Official Portfolio
 
-Next.js 15 (App Router) + TypeScript + Tailwind + Firebase (Firestore, Spark/free plan) + Framer Motion. Deployed on Vercel.
+Welcome to the official portfolio repository of **Vennam Jaya Chandra**.
 
-## Build status
+Integrated M.Tech Computer Science & Engineering student at **VIT-AP University**, focused on **AI/ML**, **Full-Stack Development**, **Computer Vision**, and **Software Engineering**.
 
-This repo is being built in 16 ordered phases. **Phase 1 (scaffolding, config, data-access layer, types) is complete.** Phases 2–16 (theme, layout, sections, SkyWrite case study, certifications, resume, contact, SEO, polish) are not yet built.
+---
 
-## Known data gaps (must resolve before seeding Firestore)
+## 🌐 Live Portfolio Link
 
-- `lib/data/projects.ts` — Fabric Marketplace `repoUrl` is `null` (unconfirmed)
-- `lib/data/projects.ts` — Python Mini Projects `repoUrl` is `null` (need repo link(s) for the combined card)
-- `lib/data/certifications.ts` — all four certification `date` fields are placeholder `2025-01-01`; need real issue dates
-- `lib/data/certifications.ts` — all `credentialUrl` fields are `null`; add if certificates are publicly verifiable
-- Resume PDF not yet added to `/public`
-- Project screenshots/hero images not yet added to `/public`
+Explore the live portfolio website here:
 
-None of the above are faked in code — they're explicit `null`/TODO markers so nothing ships silently wrong.
+👉 **[https://portfolio-jc-rho.vercel.app/](https://portfolio-jc-rho.vercel.app/)**
 
-## Local setup
+---
 
-```bash
-npm install
-cp .env.example .env.local   # fill in Firebase project values
-npm run dev
-```
+## 📌 About the Portfolio
 
-## Firestore
+This portfolio serves as an interactive showcase of my engineering projects, technical skills, certifications, academic background, and professional profile.
 
-This project uses two collections, populated from the seed data in `lib/data/*.ts` (a seed script will be added in Phase 4):
+* **Modern Portfolio Design** — Responsive and polished UI with a professional dark theme, liquid glass aesthetics, fluid animations, and smooth transitions.
+* **Featured Projects** — Highlights real-world engineering solutions:
+  * **SkyWrite** — Real-time finger-drawn air writing and OCR text extraction using OpenCV, MediaPipe, and Gemini API.
+  * **CoCanvas** — Real-time collaborative whiteboard featuring an infinite canvas, WebSocket synchronization, and live cursor tracking.
+  * **BullyMail-Threat-Intelligence** — Real-time cyberbullying detection system powered by hybrid ML classifiers, emotion analysis, and browser extension alerts.
+  * **Fabric Marketplace with AI-Based Fabric Defect Detection** — Deep learning-based automated visual inspection for textile defect localization.
+  * **CyberSentinel-AI** — Threat intelligence dashboard delivering predictive cyber threat telemetry and analysis.
+* **Technical Skills** — Demonstrates proficiency in Python, Java, JavaScript, TypeScript, Next.js, React, Tailwind CSS, AI/ML, Computer Vision, and Firebase.
+* **Certifications** — Showcases verified industry credentials from Oracle, Google, AWS, and Infosys Springboard.
+* **Interactive Admin Panel** — Built-in administrative dashboard for real-time management of portfolio content, projects, and certifications.
+* **Resume** — Integrated resume section offering inline previewing as well as direct PDF download options.
+* **Responsive Experience** — Seamlessly optimized interface designed for desktop, tablet, and mobile devices.
 
-- `projects`
-- `certifications`
+---
 
-Skills are static (`lib/data/skills.ts`), not stored in Firestore, since they change rarely — see the comment in that file for the reasoning.
+## 📬 Contact & Connect
 
-**No Firebase Storage is used anywhere in this project** (Spark plan constraint). All images ship from `/public` and are served via Next's built-in image optimization.
+* **Live Portfolio**: [https://portfolio-jc-rho.vercel.app/](https://portfolio-jc-rho.vercel.app/)
+* **LinkedIn**: [https://www.linkedin.com/in/jaya-chandra-vennam/](https://www.linkedin.com/in/jaya-chandra-vennam/)
+* **GitHub**: [https://github.com/jayachandra2003](https://github.com/jayachandra2003)
+* **Email**: [jayachandravennam.jc@gmail.com](mailto:jayachandravennam.jc@gmail.com)
 
-## Deploying to Vercel
+---
 
-1. Push this repo to GitHub.
-2. Import the repo in Vercel.
-3. Add the environment variables from `.env.example` in Vercel's project settings (Production + Preview).
-4. Deploy — Vercel auto-detects Next.js, no build config needed.
-
-## Data-access layer pattern
-
-Components never import `firebase/firestore` or `lib/firebase/config` directly. All reads go through typed functions in `lib/data/*.ts` (e.g. `getProjects()`, `getCertifications()`). This keeps the Firestore dependency isolated to one layer, so swapping data sources later doesn't touch UI code.
+<p align="center">
+  <sub>© 2026 Vennam Jaya Chandra · All rights reserved.</sub>
+</p>
