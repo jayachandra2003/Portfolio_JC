@@ -120,8 +120,8 @@ export function About({ profile }: { profile: SiteContent }) {
 
             {/* Top Pill Badge */}
             <div className="relative z-10 flex items-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/30 bg-teal-950/40 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-teal-400 shadow-sm">
-                <GraduationCap size={14} className="text-teal-400" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-accent shadow-sm">
+                <GraduationCap size={14} className="text-accent" />
                 <span>Academic Background</span>
               </div>
             </div>
@@ -185,8 +185,8 @@ export function About({ profile }: { profile: SiteContent }) {
                 <span className="font-mono text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
                   STATUS
                 </span>
-                <div className="mt-1.5 flex items-center gap-2 font-body text-xs sm:text-sm font-semibold text-emerald-400">
-                  <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50" />
+                <div className="mt-1.5 flex items-center gap-2 font-body text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                  <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-600 dark:bg-emerald-400 shadow-sm shadow-emerald-500/40" />
                   <span>Open to Opportunities</span>
                 </div>
               </div>
@@ -201,16 +201,16 @@ export function About({ profile }: { profile: SiteContent }) {
                 FOCUS AREAS
               </span>
               <div className="mt-3 flex flex-wrap gap-2.5">
-                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-4 py-1.5 font-body text-xs sm:text-[13px] font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
+                <span className="inline-flex items-center rounded-full border border-border/80 bg-foreground/[0.04] dark:bg-white/[0.04] px-4 py-1.5 font-body text-xs sm:text-[13px] font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
                   Software Development
                 </span>
-                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-4 py-1.5 font-body text-xs sm:text-[13px] font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
+                <span className="inline-flex items-center rounded-full border border-border/80 bg-foreground/[0.04] dark:bg-white/[0.04] px-4 py-1.5 font-body text-xs sm:text-[13px] font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
                   AI & Machine Learning
                 </span>
-                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-4 py-1.5 font-body text-xs sm:text-[13px] font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
+                <span className="inline-flex items-center rounded-full border border-border/80 bg-foreground/[0.04] dark:bg-white/[0.04] px-4 py-1.5 font-body text-xs sm:text-[13px] font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
                   Full-Stack Web
                 </span>
-                <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 dark:bg-white/[0.04] px-4 py-1.5 font-body text-xs sm:text-[13px] font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
+                <span className="inline-flex items-center rounded-full border border-border/80 bg-foreground/[0.04] dark:bg-white/[0.04] px-4 py-1.5 font-body text-xs sm:text-[13px] font-medium text-foreground transition-colors hover:border-accent/40 shadow-sm">
                   Computer Vision
                 </span>
               </div>
