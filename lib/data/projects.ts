@@ -15,7 +15,16 @@ export async function getProjects(): Promise<Project[]> {
     if (snapshot.empty) {
       return PROJECT_SEED_DATA;
     }
-    const firestoreProjects = snapshot.docs.map((doc) => doc.data() as Project);
+    const seedMap = new Map(PROJECT_SEED_DATA.map((p) => [p.slug, p]));
+    const firestoreProjects = snapshot.docs.map((doc) => {
+      const data = doc.data() as Project;
+      const seed = seedMap.get(data.slug);
+      return {
+        ...data,
+        demoUrl: data.demoUrl || seed?.demoUrl || null,
+        repoUrl: data.repoUrl || seed?.repoUrl || null,
+      };
+    });
     // Include any new projects from PROJECT_SEED_DATA that aren't yet in Firestore
     const existingIds = new Set(firestoreProjects.map((p) => p.id || p.slug));
     const missingSeedProjects = PROJECT_SEED_DATA.filter(
@@ -112,7 +121,7 @@ export const PROJECT_SEED_DATA: Project[] = [
       "SOC dashboard with explainable risk aggregation and calibrated threat scoring",
     ],
     repoUrl: "https://github.com/jayachandra2003/BullyMail-Threat-Intelligence",
-    demoUrl: null,
+    demoUrl: "https://bullymail-threat-intelligence.onrender.com/",
     featured: false,
     order: 3,
   },
